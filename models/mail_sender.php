@@ -8,7 +8,7 @@
         $email->setSubject("Your Justice OTP");
         $email->addTo($address, $username);
         $email->addContent("text/plain", "Your OTP for Password Reset/Account Creation: ");
-        $email->addContent("text/html", "<strong>".$otp."</strong>");
+        $email->addContent("text/html", "<strong>OTP: ".$otp."</strong>");
 
         $sendgrid=new \SendGrid(getenv('SENDGRID_API_KEY'));
         try{
