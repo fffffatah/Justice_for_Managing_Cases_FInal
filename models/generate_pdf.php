@@ -15,7 +15,4 @@
             //DO NOTHING
         }
     }
-    function getReceiptHtml(){
-        return "<b>sample</b>";
-    }
 ?>
