@@ -1,10 +1,11 @@
 <?php
+    include_once "../controllers/landing_controller.php";
     include_once "../controllers/lawyer_controller.php";
 ?>
 <html>
     <head>
         <title>Justice - for Managing Cases</title>
-        <link rel="stylesheet" type="text/css" href="../css/landing.css">
+        <link rel="stylesheet" type="text/css" href="../styles/landing.css">
     </head>
     <body>
         <center>

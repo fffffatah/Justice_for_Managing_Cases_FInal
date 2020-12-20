@@ -2,13 +2,13 @@
     require '../dependencies/pdfcrowd/pdfcrowd.php';
 ?>
 <?php
-    function getPdf($html_string){
+    function getPdf($html_string, $filepath, $id, $doctype){
         try
         {
             $client = new \Pdfcrowd\HtmlToPdfClient(getenv('PDFCROWD_USER'), getenv('PDFCROWD_API'));
-            $pdf=$client->convertString($html_string);
-            $string = implode(array_map("chr", $pdf));
-            return $string;
+            $filename=$id."_".uniqid()."_".$doctype.".pdf";
+            $pdf=$client->convertStringToFile($html_string, $filepath.$filename);
+            return $filename;
         }
         catch(\Pdfcrowd\Error $why)
         {

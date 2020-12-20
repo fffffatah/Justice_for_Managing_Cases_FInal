@@ -18,14 +18,14 @@
             //DO NOTHING
         }
     }
-    function sendAttachment($id, $username, $address, $filepath, $filetype){
+    function sendAttachment($id, $username, $address, $filename, $filepath, $subject){
         $email=new \SendGrid\Mail\Mail();
         $email->setFrom("no-reply@justicecms.com", "Justice - Attachments");
-        $email->setSubject("Your Payment Receipt");
+        $email->setSubject("Your ".$subject);
         $email->addTo($address, $username);
-        $email->addContent("text/html", "Your Justice Payment Receipt");
-        $file_encoded = base64_encode($filepath);
-        $email->addAttachment($file_encoded, "application/pdf", $id."_".$username."_".date()."_".$filetype.".pdf", "attachment");
+        $email->addContent("text/html", "Your Justice ".$subject);
+        $file_encoded = base64_encode(file_get_contents($filepath.$filename));
+        $email->addAttachment($file_encoded, "application/pdf", $filename, "attachment");
 
         $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
         try{
