@@ -54,7 +54,7 @@
     }
     
 	if(isset($_POST["signup_lawyer_button"])){
-		header("Location: admin_registration.php");
+		header("Location: lawyer_registration.php");
 	}
 	if(isset($_POST["signup_complainant_button"])){
 		//REDIRECT TO COMPLAINANT REGISTRATION PAGE
