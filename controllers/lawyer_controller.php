@@ -178,11 +178,38 @@
         }
 
         if(!$hasError){
-            
-            if(isset($_POST["reg_button"])){
-                header("Location: ../../pages/confirm_reg.php");
+            $cookie_value=uniqid();
+            setcookie("unique_id", $cookie_value, time() + (360));
+            $isHttps=(isset($_SERVER['HTTPS']))?"https://":"http://";
+            $confLink=$isHttps.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."?pp=".$pp."&fullname=".$fullname."&username=".$username."&email=".$email."&phone=".$phone."&pass=".$pass."&nid=".$nid."&dob=".$dob."&gender=".$gender."&city=".$city."&state=".$state."&zip=".$zip."&unid=".$_COOKIE["unique_id"]."&confirm=true";
+            sendConfEmail($username, $email, $confLink);
+            header("Location: lawyer_confirmation_page.php");
+        }
+    }
+    if(strcmp($_GET["confirm"],"yes")){
+        if(isset($_COOKIE["unique_id"])){
+            if(strcmp($_COOKIE["unique_id"],$_GET["unid"])==0){
+                unset($_COOKIE["unique_id"]);
+                echo "works";
+                //DO DB THANG //TODO
+            }
+            else{
+                header("Location: landing.php");
             }
         }
+        else{
+            header("Location: landing.php");
+        }
+    }
+
+    if(isset($_POST["signup_lawyer_button"])){
+        header("Location: lawyer_registration.php");
+    }
+    if(isset($_POST["signup_complainant_button"])){
+        //REDIRECT TO CLIENT/COMPLAINANT REGISTRATION
+    }
+    if(isset($_POST["signup_judge_button"])){
+        //REDIRECT TO JUDGE REGISTARTION
     }
 
     //LAWYER DATA ACCESS FUNCTIONS

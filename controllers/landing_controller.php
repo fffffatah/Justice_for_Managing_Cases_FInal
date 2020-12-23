@@ -41,7 +41,7 @@
                     //REDIRECT TO ADMIN DASHBOARD
                 }
                 elseif(strcmp($user_id[0]["type"],"lawyer")==0){
-                    header("Location: admin_dashboard.php?id=".$user_id[0]["id"]);
+                    header("Location: lawyer_dashboard.php?id=".$user_id[0]["id"]);
                 }
                 elseif(strcmp($user_id[0]["type"],"judge")==0){
                     //REDIRECT TO JUDGE DASHBOARD

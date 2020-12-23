@@ -2,13 +2,13 @@
     require_once '../dependencies/sendgrid-php/sendgrid-php.php';
 ?>
 <?php
-    function sendOtp($username, $address, $otp){
+    function sendConfEmail($username, $address, $confLink){
         $email=new \SendGrid\Mail\Mail();
-        $email->setFrom("no-reply@justicecms.com", "Justice - OTP");
-        $email->setSubject("Your Justice OTP");
+        $email->setFrom("no-reply@justicecms.com", "Justice - Confirmation");
+        $email->setSubject("Your Justice Confirmation Email");
         $email->addTo($address, $username);
-        $email->addContent("text/plain", "Your OTP for Password Reset/Account Creation: ");
-        $email->addContent("text/html", "<strong>OTP: ".$otp."</strong>");
+        $email->addContent("text/plain", "Confirmation Email for Account Creation: ");
+        $email->addContent("text/html", "<strong>Confirmation Email for Account Creation: ".$confLink."</strong>");
 
         $sendgrid=new \SendGrid(getenv('SENDGRID_API_KEY'));
         try{

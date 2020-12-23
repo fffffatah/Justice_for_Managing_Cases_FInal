@@ -16,8 +16,14 @@
                         <div>
                             <td align="center" class="dropshadow">
                             <h4>Login</h4>
-                            <input type="text" name="login_email" placeholder="Email" value="<?php echo $login_email;?>"><span style="color:red;">*<?php echo $err_login_email;?></span><br><br>
-                            <input type="password" name="login_pass" placeholder="Password" value="<?php echo $login_pass;?>"><span style="color:red;">*<?php echo $err_login_pass;?></span><br>
+                            <table>
+                                <tr>
+                                    <td><input type="text" name="login_email" placeholder="Email" value="<?php echo $login_email;?>"><span style="color:red;">*<?php echo $err_login_email;?></span></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="password" name="login_pass" placeholder="Password" value="<?php echo $login_pass;?>"><span style="color:red;">*<?php echo $err_login_pass;?></span></td>
+                                </tr>
+                            </table>
                             <a href="forgot_pass.php">Forgot password?</a><br><br>
                             <input type="submit" style="color:Green;" name="login_button" value="Login">
                             </td>
@@ -25,8 +31,9 @@
                         <div>
                             <td align="center" class="dropshadow">
                             <h4>Signup</h4>
-                            <input type="submit" style="color:#342D7E;" name="signup_lawyer_button" value="As Lawyer"><br><br>
-                            <input type="submit" style="color:#0000A0;" name="signup_complainant_button" value="As Complainant"><br>
+                            <input type="submit" style="color:green;" name="signup_lawyer_button" value="As Lawyer"><br><br>
+                            <input type="submit" style="color:green;" name="signup_complainant_button" value="As Complainant"><br><br>
+                            <input type="submit" style="color:green;" name="signup_judge_button" value="As Judge"><br>
                             </td>
                         </div>
                     </tr>

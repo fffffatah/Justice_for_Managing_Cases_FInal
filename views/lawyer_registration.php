@@ -9,7 +9,7 @@
     </head>
     <body>
         <center>
-            <form action="" method="POST">
+            <form action="" method="POST" onsubmit="return registrationValidation()">
                 <table>
                     <tr>
                         <td><img src="../assets/justicelogo.png"; width="380" height="480"></td>
@@ -73,7 +73,7 @@
                                     <td><input type="text" name="zip" placeholder="postal/Zip-Code"><span style="color:red;">*<?php echo $err_zip;?></span></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" align="center"><a href="../views/landing.php"><U>Already registered!go to login</U></a></td>
+                                    <td colspan="2" align="center"><a href="landing.php"><U>Already registered!go to login</U></a></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" align="center"><input type="submit" name="reg_button" class="button" value="Register"></td>
@@ -85,4 +85,6 @@
             </form>
         </center>
     </body>
+    <script src="../scripts/lawyer_validation.js"></script>
+    <script src="../scripts/lawyer_registration.js"></script>
 </html>
