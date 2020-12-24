@@ -19,10 +19,6 @@
     $err_pass="";
     $cpass="";
     $err_cpass="";
-    $pass="";
-    $err_pass="";
-    $cpass="";
-    $err_cpass="";
     $nid="";
     $err_nid="";
     $dob="";
@@ -30,21 +26,25 @@
     $gender="";
     $err_gender="";
     $address="";
+    $err_address="";
     $city="";
     $err_city="";
     $state="";
     $err_state="";
     $zip="";
     $err_zip="";
+    $cookie_value=uniqid();
+    $cookie_name="unique_id";
     $hasError=false;
     if(isset($_POST["reg_button"])){
         //PROFILE PIC VALIDATION
-        if(!isset($_POST["pp"])){
-            $err_pp="Select a Profile Picture";
+        if(empty($_FILES["image"]["name"])){
+            $err_pp="Profile Picture Required";
             $hasError=true;
         }
         else{
-            $pp=htmlspecialchars($_POST["pp"]);
+            $fileType=strtolower(pathinfo(basename($_FILES["image"]["name"]),PATHINFO_EXTENSION));
+            $pp="../storage/images/".uniqid().".$fileType";
         }
         //FULLNAME VALIDATION
         if(empty($_POST["fullname"])){
@@ -128,7 +128,7 @@
             $hasError=true;
         }
         else{
-            $pass=htmlspecialchars($_POST["pass"]);
+            $pass=md5(htmlspecialchars($_POST["pass"]));
         }
         //NID VALIDATION
         if(empty($_POST["nid"])){
@@ -155,6 +155,13 @@
             $hasError=true;
         }
         //ADDRESS VALIDATION
+        if(empty($_POST["address"])){
+            $err_address="Address Required";
+            $hasError=true;
+        }
+        else{
+            $address=htmlspecialchars($_POST["address"]);
+        }
         if(empty($_POST["city"])){
             $err_city="City Required";
             $hasError=true;
@@ -178,43 +185,35 @@
         }
 
         if(!$hasError){
-            $cookie_value=uniqid();
-            setcookie("unique_id", $cookie_value, time() + (360));
+            setcookie($cookie_name, $cookie_value, time()+360, "/");
             $isHttps=(isset($_SERVER['HTTPS']))?"https://":"http://";
-            $confLink=$isHttps.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."?pp=".$pp."&fullname=".$fullname."&username=".$username."&email=".$email."&phone=".$phone."&pass=".$pass."&nid=".$nid."&dob=".$dob."&gender=".$gender."&city=".$city."&state=".$state."&zip=".$zip."&unid=".$_COOKIE["unique_id"]."&confirm=true";
+            $confLink=$isHttps.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."?pp=".rawurlencode($pp)."&fullname=".rawurlencode($fullname)."&username=".rawurlencode($username)."&email=".rawurlencode($email)."&phone=".rawurlencode($phone)."&pass=".rawurlencode($pass)."&nid=".rawurlencode($nid)."&dob=".rawurlencode($dob)."&gender=".rawurlencode($gender)."&address=".rawurlencode($address)."&city=".rawurlencode($city)."&state=".$state."&zip=".rawurlencode($zip)."&unid=".rawurlencode($cookie_value)."&confirm=true";
             sendConfEmail($username, $email, $confLink);
             header("Location: lawyer_confirmation_page.php");
         }
     }
-    if(strcmp($_GET["confirm"],"yes")){
-        if(isset($_COOKIE["unique_id"])){
-            if(strcmp($_COOKIE["unique_id"],$_GET["unid"])==0){
-                unset($_COOKIE["unique_id"]);
-                echo "works";
-                //DO DB THANG //TODO
+    if(isset($_GET["confirm"])){
+        if(isset($_COOKIE[$cookie_name])){
+            if(strcmp($_COOKIE[$cookie_name],$_GET["unid"])==0){
+                unset($_COOKIE[$cookie_name]);
+                setcookie($cookie_name, null, -1, '/'); 
+                addLawyer($_GET["pp"], $_GET["fullname"], $_GET["username"], $_GET["email"], $_GET["phone"], $_GET["pass"], $_GET["nid"], $_GET["dob"], $_GET["gender"], $_GET["address"], $_GET["city"], $_GET["state"], $_GET["zip"]);
+                header("Location: lawyer_successfull_signup.php");
             }
             else{
-                header("Location: landing.php");
+                header("Location: lawyer_registration.php");
             }
         }
         else{
-            header("Location: landing.php");
+            header("Location: lawyer_registration.php");
         }
     }
 
-    if(isset($_POST["signup_lawyer_button"])){
-        header("Location: lawyer_registration.php");
-    }
-    if(isset($_POST["signup_complainant_button"])){
-        //REDIRECT TO CLIENT/COMPLAINANT REGISTRATION
-    }
-    if(isset($_POST["signup_judge_button"])){
-        //REDIRECT TO JUDGE REGISTARTION
-    }
-
     //LAWYER DATA ACCESS FUNCTIONS
-    function addLawyer(){
-
+    function addLawyer($pp, $fullname, $username, $email, $phone, $pass, $nid, $dob, $gender, $address, $city, $state, $zip){
+        move_uploaded_file($_FILES["image"]["tmp_name"],$pp);
+        $query="";
+        doNoQuery($query);
     }
     function updateLawyer(){
 

@@ -8,7 +8,8 @@
         $email->setSubject("Your Justice Confirmation Email");
         $email->addTo($address, $username);
         $email->addContent("text/plain", "Confirmation Email for Account Creation: ");
-        $email->addContent("text/html", "<strong>Confirmation Email for Account Creation: ".$confLink."</strong>");
+        
+        $email->addContent("text/html", "<strong>Confirmation Email for Account Creation: <u><a href=".$confLink." target=\"_blank\">Click Here</a></u></strong>");
 
         $sendgrid=new \SendGrid(getenv('SENDGRID_API_KEY'));
         try{

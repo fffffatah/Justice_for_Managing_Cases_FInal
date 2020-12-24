@@ -5,37 +5,34 @@
 <html>
     <head>
         <title>Justice - for Managing Cases</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="../styles/lawyer_styles.css">
     </head>
     <body>
         <center>
-            <form action="" method="POST">
+            <form action="" method="POST" style="padding:20px;">
                 <table>
                     <tr>
-                        <td><img src="../assets/justicelogo.png"; width="380" height="480"></td>
-                        <div>
-                            <td align="center" class="dropshadow">
-                            <h4>Login</h4>
+                        <td style="padding:20px;"><img src="../assets/justicelogo.png"; width="380" height="480"></td>
+                        <td align="center" class="dropshadow">
+                            <h4 style="color:green;">Login</h4><br><br>
                             <table>
                                 <tr>
-                                    <td><input type="text" name="login_email" placeholder="Email" value="<?php echo $login_email;?>"><span style="color:red;">*<?php echo $err_login_email;?></span></td>
+                                    <td style="padding-bottom:20px;"><input type="text" name="login_email" placeholder="Email" value="<?php echo $login_email;?>"><span style="color:red;">*<?php echo $err_login_email;?></span></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="password" name="login_pass" placeholder="Password" value="<?php echo $login_pass;?>"><span style="color:red;">*<?php echo $err_login_pass;?></span></td>
+                                    <td style="padding-bottom:20px;"><input type="password" name="login_pass" placeholder="Password" value="<?php echo $login_pass;?>"><span style="color:red;">*<?php echo $err_login_pass;?></span></td>
                                 </tr>
                             </table>
-                            <a href="forgot_pass.php">Forgot password?</a><br><br>
+                            <a href="lawyer_forgot_pass.php">Forgot password?</a><br><br>
                             <input type="submit" style="color:Green;" name="login_button" value="Login">
-                            </td>
-                        </div>
-                        <div>
-                            <td align="center" class="dropshadow">
-                            <h4>Signup</h4>
+                        </td>
+                        <td align="center" class="dropshadow">
+                            <h4 style="color:green;">Signup</h4><br><br><br><br>
                             <input type="submit" style="color:green;" name="signup_lawyer_button" value="As Lawyer"><br><br>
                             <input type="submit" style="color:green;" name="signup_complainant_button" value="As Complainant"><br><br>
                             <input type="submit" style="color:green;" name="signup_judge_button" value="As Judge"><br>
-                            </td>
-                        </div>
+                        </td>
                     </tr>
                 </table>
             </form>
