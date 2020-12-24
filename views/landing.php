@@ -28,10 +28,10 @@
                             <input type="submit" style="color:Green;" name="login_button" value="Login">
                         </td>
                         <td align="center" class="dropshadow">
-                            <h4 style="color:green;">Signup</h4><br><br><br><br>
+                            <h4 style="color:green;">Signup</h4><br>
                             <a class="btn btn-info" href="lawyer_registration.php">As Lawyer</a><br><br>
-                            <a class="btn btn-info" href="">As Complainant</a><br><br>
-                            <a class="btn btn-info" href="">As Judge</a><br><br>
+                            <a class="btn btn-info" href="">As Complainant</a><br><br><!--ADD YOUR HYPERLINK-->
+                            <a class="btn btn-info" href="">As Judge</a><br><br><!--ADD YOUR HYPERLINK-->
                         </td>
                     </tr>
                 </table>
