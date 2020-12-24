@@ -3,7 +3,7 @@ function getElement(id){
 }
 
 function registrationValidation(){
-    refreshLog();
+    refreshReg();
     var hasError=false;
     var pp=getElement("pp");
     var err_pp=getElement("err_pp");
@@ -43,7 +43,7 @@ function registrationValidation(){
     //FULLNAME VALIDATION
     if(fullname.value==""){
         hasError=true;
-        err_fullname.innerHTML="* Profile Picture Required";
+        err_fullname.innerHTML="* Fullname Required";
         fullname.focus();
         fullname.style.border="2px solid red";
     }
@@ -175,7 +175,7 @@ function registrationValidation(){
     return !hasError;
 }
 
-function refreshLog(){
+function refreshReg(){
     var err_pp=getElement("err_pp");
     var err_fullname=getElement("err_fullname");
     var err_username=getElement("err_username");

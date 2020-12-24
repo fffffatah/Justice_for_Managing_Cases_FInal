@@ -10,7 +10,7 @@
     </head>
     <body>
         <center>
-            <form action="" method="POST" style="padding:20px;">
+            <form action="" method="POST" onsubmit="return landingValidation()" style="padding:20px;">
                 <table>
                     <tr>
                         <td style="padding:20px;"><img src="../assets/justicelogo.png"; width="380" height="480"></td>
@@ -20,10 +20,10 @@
                                 <div class="panel-body">
                                     <table>
                                         <tr>
-                                            <td style="padding-bottom:10px;"><input class="form-control" type="text" name="login_email" placeholder="Email" value="<?php echo $login_email;?>"><span style="color:red;">*<?php echo $err_login_email;?></span></td>
+                                            <td style="padding-bottom:10px;"><input class="form-control" type="text" name="login_email" placeholder="Email" value="<?php echo $login_email;?>"><span id="err_login_email" style="color:red;"><?php echo $err_login_email;?></span></td>
                                         </tr>
                                         <tr>
-                                            <td style="padding-bottom:20px;"><input class="form-control" type="password" name="login_pass" placeholder="Password" value="<?php echo $login_pass;?>"><span style="color:red;">*<?php echo $err_login_pass;?></span></td>
+                                            <td style="padding-bottom:20px;"><input class="form-control" type="password" name="login_pass" placeholder="Password" value="<?php echo $login_pass;?>"><span id="err_login_pass" style="color:red;"><?php echo $err_login_pass;?></span></td>
                                         </tr>
                                     </table>
                                     <a href="lawyer_forgot_pass.php">Forgot password?</a><br><br>
@@ -47,5 +47,6 @@
                 </table>
             </form>
         </center>
+        <script src="../scripts/landing_validation.js"></script>
     </body>
 </html>

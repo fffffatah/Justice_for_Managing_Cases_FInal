@@ -11,14 +11,14 @@
 	$flag=false;
 	if(isset($_POST["login_button"])){
 		if(empty($_POST["login_email"])){
-			$err_login_email="Email Required";
+			$err_login_email="* Email Required";
 			$hasError =true;
 		}
 		else{
 			$login_email = htmlspecialchars($_POST["login_email"]);
 		}
 		if(empty($_POST["login_pass"])){
-			$err_login_pass="Password Required";
+			$err_login_pass="* Password Required";
 			$hasError = true;
 		}
 		else{
