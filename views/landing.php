@@ -14,24 +14,34 @@
                 <table>
                     <tr>
                         <td style="padding:20px;"><img src="../assets/justicelogo.png"; width="380" height="480"></td>
-                        <td align="center" class="dropshadow">
-                            <h4 style="color:green;">Login</h4><br><br>
-                            <table>
-                                <tr>
-                                    <td style="padding-bottom:20px;"><input type="text" name="login_email" placeholder="Email" value="<?php echo $login_email;?>"><span style="color:red;">*<?php echo $err_login_email;?></span></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-bottom:20px;"><input type="password" name="login_pass" placeholder="Password" value="<?php echo $login_pass;?>"><span style="color:red;">*<?php echo $err_login_pass;?></span></td>
-                                </tr>
-                            </table>
-                            <a href="lawyer_forgot_pass.php">Forgot password?</a><br><br>
-                            <input type="submit" style="color:Green;" name="login_button" value="Login">
+                        <td align="center">
+                            <div class="panel panel-success" style="height:300px;width:250px">
+                                <div class="panel-heading">Login</div>
+                                <div class="panel-body">
+                                    <table>
+                                        <tr>
+                                            <td style="padding-bottom:10px;"><input class="form-control" type="text" name="login_email" placeholder="Email" value="<?php echo $login_email;?>"><span style="color:red;">*<?php echo $err_login_email;?></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding-bottom:20px;"><input class="form-control" type="password" name="login_pass" placeholder="Password" value="<?php echo $login_pass;?>"><span style="color:red;">*<?php echo $err_login_pass;?></span></td>
+                                        </tr>
+                                    </table>
+                                    <a href="lawyer_forgot_pass.php">Forgot password?</a><br><br>
+                                    <input class="btn btn-success" type="submit" name="login_button" value="Login">
+                                </div>
+                            </div>
                         </td>
-                        <td align="center" class="dropshadow">
-                            <h4 style="color:green;">Signup</h4><br>
-                            <a class="btn btn-info" href="lawyer_registration.php">As Lawyer</a><br><br>
-                            <a class="btn btn-info" href="">As Complainant</a><br><br><!--ADD YOUR HYPERLINK-->
-                            <a class="btn btn-info" href="">As Judge</a><br><br><!--ADD YOUR HYPERLINK-->
+                        <td align="center">
+                            <div class="panel panel-success" style="height:300px;width:250px">
+                                <div class="panel-heading">Signup</div>
+                                <div class="panel-body">
+                                    <div class="btn-group-vertical">
+                                        <a class="btn btn-info" href="lawyer_registration.php">As Lawyer</a>
+                                        <a class="btn btn-info" href="">As Complainant</a><!--ADD YOUR HYPERLINK-->
+                                        <a class="btn btn-info" href="">As Judge</a><!--ADD YOUR HYPERLINK-->
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </table>

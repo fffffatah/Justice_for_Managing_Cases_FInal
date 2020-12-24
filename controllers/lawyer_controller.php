@@ -39,7 +39,7 @@
     if(isset($_POST["reg_button"])){
         //PROFILE PIC VALIDATION
         if(empty($_FILES["image"]["name"])){
-            $err_pp="Profile Picture Required";
+            $err_pp="Profile Picture Required.";
             $hasError=true;
         }
         else{
@@ -48,7 +48,7 @@
         }
         //FULLNAME VALIDATION
         if(empty($_POST["fullname"])){
-            $err_fullname="Full Name Required";
+            $err_fullname="Full Name Required.";
             $hasError=true;
         }
         else{
@@ -56,11 +56,11 @@
         }
         //USERNAME VALIDATION
         if(empty($_POST["username"])){
-            $err_username="User Name Required";
+            $err_username="User Name Required.";
             $hasError=true;
         }
         elseif(strpos($_POST["username"]," ")!=false && strlen($_POST["username"])<8){
-            $err_username="Username Cannot Contain Spaces and Must Be >8 Characters";
+            $err_username="Username Cannot Contain Spaces and Must Be >8 Characters.";
             $hasError=true;
         }
         else{
@@ -68,7 +68,7 @@
         }
         //EMAIL VALIDATION
         if(empty($_POST["email"])){
-            $err_email="Email Required";
+            $err_email="Email Required.";
             $hasError=true;
         }
         elseif(strpos($_POST["email"],"@") && strpos($_POST["email"],".")){
@@ -86,11 +86,11 @@
         }
         //PHONE VALIDATION
         if(empty($_POST["phone"])){
-            $err_phone="Phone Number Required";
+            $err_phone="Phone Number Required.";
             $hasError=true;
         }
         elseif(strlen($_POST["phone"])!=11){
-            $err_phone="Phone Number Must be 11 Digits";
+            $err_phone="Phone Number Must be 11 Digits.";
             $hasError=true;
         }
         else{
@@ -98,17 +98,17 @@
         }
         //PASSWORD VALIDATION
         if(empty($_POST["pass"])){
-            $err_pass="Password Required";
+            $err_pass="Password Required.";
             $hasError=true;
         }
         elseif(strlen($_POST["pass"])<8){
-            $err_pass="Password must be 8 characters long.";
+            $err_pass="Password must be >=8 characters.";
             $hasError=true;
         }
         elseif(!strpos($_POST['pass'], "1") && !strpos($_POST['pass'], "2") && !strpos($_POST['pass'], "3") && !strpos($_POST['pass'], "4")
             && !strpos($_POST['pass'], "5") && !strpos($_POST['pass'], "6") && !strpos($_POST['pass'], "7") && !strpos($_POST['pass'], "8")
             && !strpos($_POST['pass'], "9") && !strpos($_POST['pass'], "0")) {
-            $err_pass="Password must have 1 numeric";
+            $err_pass="Password must have 1 numeric.";
             $hasError=true;
         }
         elseif(strcmp(strtoupper($_POST["pass"]),$_POST["pass"])==0 && strcmp(strtolower($_POST["pass"]),$_POST["pass"])==0){
@@ -120,11 +120,11 @@
             $hasError=true;
         }
         elseif(empty($_POST["cpass"])){
-            $err_cpass="Confirmed Password Required";
+            $err_cpass="Confirmed Password Required.";
             $hasError=true;
         }
         elseif(strcmp($_POST["cpass"],$_POST["pass"])!=0){
-            $err_cpass="Password and Confirm Password must be same";
+            $err_cpass="Password and Confirm Password must be same.";
             $hasError=true;
         }
         else{
@@ -132,7 +132,7 @@
         }
         //NID VALIDATION
         if(empty($_POST["nid"])){
-            $err_nid="NID Required";
+            $err_nid="NID Required.";
             $hasError=true;
         }
         else{
@@ -140,7 +140,7 @@
         }
         //DATE OF BIRTH VALIDATION
         if(!isset($_POST["dob"])){
-            $err_dob="Birthday Required";
+            $err_dob="Birthday Required.";
             $hasError=true;
         }
         else{
@@ -151,33 +151,36 @@
             $gender=$_POST["gender"];
         }
         else{
-            $err_gender="Gender Required";
+            $err_gender="Gender Required.";
             $hasError=true;
         }
         //ADDRESS VALIDATION
         if(empty($_POST["address"])){
-            $err_address="Address Required";
+            $err_address="Address Required.";
             $hasError=true;
         }
         else{
             $address=htmlspecialchars($_POST["address"]);
         }
+        //CITY VALIDATION
         if(empty($_POST["city"])){
-            $err_city="City Required";
+            $err_city="City Required.";
             $hasError=true;
         }
         else{
             $city=htmlspecialchars($_POST["city"]);
         }
+        //STATE VALIDATION
         if(empty($_POST["state"])){
-            $err_state="state Required";
+            $err_state="State Required.";
             $hasError=true;
         }
         else{
             $state=htmlspecialchars($_POST["state"]);
         }
+        //ZIP VALIDATION
         if(empty($_POST["zip"])){
-            $err_zip="Zip/Postal Code Required";
+            $err_zip="Zip/Postal Code Required.";
             $hasError=true;
         }
         else{
@@ -212,7 +215,7 @@
     //LAWYER DATA ACCESS FUNCTIONS
     function addLawyer($pp, $fullname, $username, $email, $phone, $pass, $nid, $dob, $gender, $address, $city, $state, $zip){
         move_uploaded_file($_FILES["image"]["tmp_name"],$pp);
-        $query="";
+        $query="";//ADD_QUERY
         doNoQuery($query);
     }
     function updateLawyer(){
