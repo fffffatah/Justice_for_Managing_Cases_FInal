@@ -29,9 +29,9 @@
                         </td>
                         <td align="center" class="dropshadow">
                             <h4 style="color:green;">Signup</h4><br><br><br><br>
-                            <input type="submit" style="color:green;" name="signup_lawyer_button" value="As Lawyer"><br><br>
-                            <input type="submit" style="color:green;" name="signup_complainant_button" value="As Complainant"><br><br>
-                            <input type="submit" style="color:green;" name="signup_judge_button" value="As Judge"><br>
+                            <a class="btn btn-info" href="lawyer_registration.php">As Lawyer</a><br><br>
+                            <a class="btn btn-info" href="">As Complainant</a><br><br>
+                            <a class="btn btn-info" href="">As Judge</a><br><br>
                         </td>
                     </tr>
                 </table>
