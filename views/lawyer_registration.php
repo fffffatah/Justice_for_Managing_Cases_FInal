@@ -7,6 +7,7 @@
         <title>Justice - Registration</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="../styles/lawyer_styles.css">
+        <link rel="icon" href="../assets/favicon_all_logo.png">
     </head>
     <body>
         <center>
