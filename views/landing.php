@@ -13,17 +13,17 @@
             <form action="" method="POST" onsubmit="return landingValidation()" style="padding:20px;">
                 <table>
                     <tr>
-                        <td style="padding:20px;"><img src="../assets/justicelogo.png"; width="380" height="480"></td>
+                        <td style="padding:20px;"><img src="../assets/justicelogo.png"; width="300" height="400"></td>
                         <td align="center">
                             <div class="panel panel-success" style="height:300px;width:250px">
                                 <div class="panel-heading">Login</div>
                                 <div class="panel-body">
                                     <table>
                                         <tr>
-                                            <td style="padding-bottom:10px;"><input class="form-control" type="text" name="login_email" placeholder="Email" value="<?php echo $login_email;?>"><span id="err_login_email" style="color:red;"><?php echo $err_login_email;?></span></td>
+                                            <td style="padding-bottom:10px;"><input class="form-control" type="text" name="login_email" id="login_email" placeholder="Email" value="<?php echo $login_email;?>"><span id="err_login_email" style="color:red;"><?php echo $err_login_email;?></span></td>
                                         </tr>
                                         <tr>
-                                            <td style="padding-bottom:20px;"><input class="form-control" type="password" name="login_pass" placeholder="Password" value="<?php echo $login_pass;?>"><span id="err_login_pass" style="color:red;"><?php echo $err_login_pass;?></span></td>
+                                            <td style="padding-bottom:20px;"><input class="form-control" type="password" name="login_pass" id="login_pass" placeholder="Password" value="<?php echo $login_pass;?>"><span id="err_login_pass" style="color:red;"><?php echo $err_login_pass;?></span></td>
                                         </tr>
                                     </table>
                                     <a href="lawyer_forgot_pass.php">Forgot password?</a><br><br>

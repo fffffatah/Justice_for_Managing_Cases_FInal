@@ -23,7 +23,8 @@ function registrationValidation(){
     var err_nid=getElement("err_nid");
     var dob=getElement("dob");
     var err_dob=getElement("err_dob");
-    var gender=getElement("gender");
+    var gender_male=getElement("gender_male");
+    var gender_female=getElement("gender_female");
     var err_gender=getElement("err_gender");
     var address=getElement("address");
     var err_address=getElement("err_address");
@@ -36,54 +37,66 @@ function registrationValidation(){
     //PROFILE PIC VALIDATION
     if(pp.value==""){
         hasError=true;
-        err_pp.innerHTML="* Profile Picture Required";
+        err_pp.innerHTML="* Profile Picture Required.";
         pp.focus();
         pp.style.border="2px solid red";
     }
     //FULLNAME VALIDATION
     if(fullname.value==""){
         hasError=true;
-        err_fullname.innerHTML="* Fullname Required";
+        err_fullname.innerHTML="* Fullname Required.";
         fullname.focus();
         fullname.style.border="2px solid red";
     }
     //USERNAME VALIDATION
-    if(username.value.search(" ")!=-1 && username.value.length<8){
+    if(username.value==""){
         hasError=true;
-        err_username.innerHTML="* Username Cannot Contain Spaces and Must Be >=8 Characters";
+        err_username.innerHTML="* Username Required.";
+        username.focus();
+        username.style.border="2px solid red";
+    }
+    else if(username.value.search(" ")!=-1){
+        hasError=true;
+        err_username.innerHTML="* Username Cannot Contain Spaces.";
+        username.focus();
+        username.style.border="2px solid red";
+    }
+    else if(username.value.length<8){
+        hasError=true;
+        err_username.innerHTML="* Username Must Be >=8 Characters.";
         username.focus();
         username.style.border="2px solid red";
     }
     //EMAIL VALIDATION
     if(email.value==""){
         hasError=true;
-        err_email.innerHTML="* Email Required";
+        err_email.innerHTML="* Email Required.";
         email.focus();
         email.style.border="2px solid red";
     }
-    else if(email.value.search("@")!=-1){
+    else if(email.value.search("@")==-1){
         hasError=true;
-        err_email.innerHTML="* Email Invalid";
+        err_email.innerHTML="* Email Invalid.";
         email.focus();
         email.style.border="2px solid red";
     }
     //PHONE VALIDATION
     if(phone.value==""){
         hasError=true;
-        err_phone.innerHTML="* Phone Required";
+        err_phone.innerHTML="* Phone Required.";
         phone.focus();
         phone.style.border="2px solid red";
     }
     else if(phone.value.lenght!=11){
         hasError=true;
-        err_phone.innerHTML="* Phone Number Must be 11 Digits";
+        err_phone.innerHTML="* Phone Number Must be 11 Digits.";
         phone.focus();
         phone.style.border="2px solid red";
     }
     //PASSWORD VALIDATION
     if(pass.value==""){
         hasError=true;
-        err_pass.innerHTML="* Password Required";
+        err_pass.innerHTML="* Password Required.";
         pass.focus();
         pass.style.border="2px solid red";
     }
@@ -138,11 +151,11 @@ function registrationValidation(){
         dob.style.border="2px solid red";
     }
     //GENDER VALIDATION
-    if(gender.value==""){
+    if(gender_male.checked==false && gender_female.checked==false){
         hasError=true;
         err_gender.innerHTML="* Gender Required.";
-        gender.focus();
-        gender.style.border="2px solid red";
+        gender_male.focus();
+        gender_male.style.border="2px solid red";
     }
     //ADDRESS VALIDATION
     if(address.value==""){
@@ -200,7 +213,8 @@ function refreshReg(){
     var cpass=getElement("cpass");
     var nid=getElement("nid");
     var dob=getElement("dob");
-    var gender=getElement("gender");
+    var gender_male=getElement("gender_male");
+    var gender_female=getElement("gender_female");
     var address=getElement("address");
     var city=getElement("city");
     var state=getElement("state");
@@ -230,7 +244,8 @@ function refreshReg(){
     cpass.style.border="2px solid black";
     nid.style.border="2px solid black";
     dob.style.border="2px solid black";
-    gender.style.border="2px solid black";
+    gender_male.style.border="2px solid black";
+    gender_female.style.border="2px solid black";
     address.style.border="2px solid black";
     city.style.border="2px solid black";
     state.style.border="2px solid black";

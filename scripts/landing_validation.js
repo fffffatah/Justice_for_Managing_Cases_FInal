@@ -16,7 +16,7 @@ function landingValidation(){
         login_email.focus();
         login_email.style.border="2px solid red";
     }
-    else if(login_email.value.search("@")!=-1){
+    else if(login_email.value.search("@")==-1){
         hasError=true;
         err_login_email.innerHTML="* Email Invalid";
         login_email.focus();
