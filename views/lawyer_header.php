@@ -3,9 +3,10 @@
         <title>Justice - Laywer</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="icon" href="../assets/favicon_all_logo.png">
+        <link rel="stylesheet" type="text/css" href="../styles/lawyer_styles.css">
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top dropshadow">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <img src="../assets/lawyer_dashboard_top_left_logo.png" height="50px" width="60px">
@@ -19,7 +20,7 @@
                     <li><a href="lawyer_chats.php">Chats</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="btn btn-success" href="lawyer_profile.php" style="color:white;"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                    <li><a class="btn btn-info" href="lawyer_profile.php" style="color:white;"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
 				    <li><a class="btn btn-danger" href="landing.php" style="color:white;"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			    </ul>
             </div>

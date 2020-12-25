@@ -15,8 +15,8 @@
                 <table>
                     <tr>
                         <td style="padding:20px;"><img src="../assets/justicelogo.png"; width="300" height="400"></td>
-                        <td align="center">
-                            <div class="panel panel-success" style="height:300px;width:250px">
+                        <td align="center" style="padding:20px;">
+                            <div class="panel panel-success dropshadow" style="height:300px;width:250px">
                                 <div class="panel-heading">Login</div>
                                 <div class="panel-body">
                                     <table>
@@ -32,8 +32,8 @@
                                 </div>
                             </div>
                         </td>
-                        <td align="center">
-                            <div class="panel panel-success" style="height:300px;width:250px">
+                        <td align="center" style="padding:20px;">
+                            <div class="panel panel-success dropshadow" style="height:300px;width:250px">
                                 <div class="panel-heading">Signup</div>
                                 <div class="panel-body">
                                     <div class="btn-group-vertical">
