@@ -15,6 +15,7 @@
                     <li><a href="lawyer_dashboard.php">Dashboard</a></li>
                     <li><a href="lawyer_cases.php">Cases</a></li>
                     <li><a href="lawyer_clients.php">Clients</a></li>
+                    <li><a href="lawyer_meetings.php">Meetings</a></li>
                     <li><a href="lawyer_reports.php">Reports</a></li>
                     <li><a href="lawyer_payments.php">Payments</a></li>
                     <li><a href="lawyer_chats.php">Chats</a></li>

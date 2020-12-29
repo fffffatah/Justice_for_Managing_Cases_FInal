@@ -87,7 +87,7 @@ function registrationValidation(){
         phone.focus();
         phone.style.border="2px solid red";
     }
-    else if(phone.value.lenght!=11){
+    else if(phone.value.length!=11){
         hasError=true;
         err_phone.innerHTML="* Phone Number Must be 11 Digits.";
         phone.focus();
@@ -100,7 +100,7 @@ function registrationValidation(){
         pass.focus();
         pass.style.border="2px solid red";
     }
-    else if(pass.value.lenght<8){
+    else if(pass.value.length<8){
         hasError=true;
         err_pass.innerHTML="* Password must be >=8 characters.";
         pass.focus();

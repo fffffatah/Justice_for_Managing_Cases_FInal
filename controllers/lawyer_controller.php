@@ -38,13 +38,14 @@
     $hasError=false;
     if(isset($_POST["reg_button"])){
         //PROFILE PIC VALIDATION
-        if(empty($_FILES["image"]["name"])){
+        if(empty($_FILES["pp"]["name"])){
             $err_pp="* Profile Picture Required.";
             $hasError=true;
         }
         else{
-            $fileType=strtolower(pathinfo(basename($_FILES["image"]["name"]),PATHINFO_EXTENSION));
+            $fileType=strtolower(pathinfo(basename($_FILES["pp"]["name"]),PATHINFO_EXTENSION));
             $pp="../storage/images/".uniqid().".$fileType";
+            move_uploaded_file($_FILES["pp"]["tmp_name"],$pp);
         }
         //FULLNAME VALIDATION
         if(empty($_POST["fullname"])){
@@ -214,20 +215,23 @@
 
     //LAWYER DATA ACCESS FUNCTIONS
     function addLawyer($pp, $fullname, $username, $email, $phone, $pass, $nid, $dob, $gender, $address, $city, $state, $zip){
-        move_uploaded_file($_FILES["image"]["tmp_name"],$pp);
-        $query="";//ADD_QUERY
+        $query="INSERT INTO users(PP, FULLNAME, USERNAME, EMAIL, PHONE, PASS, NID, DOB, GENDER, ADDRESS, CITY, STATE, ZIP, TYPE) VALUES('$pp','$fullname','$username','$email','$phone','$pass','$nid','$dob','$gender','$address','$city','$state','$zip','lawyer')";
         doNoQuery($query);
     }
-    function updateLawyer(){
-
+    function updateLawyer($pp, $fullname, $username, $email, $phone, $pass, $nid, $dob, $gender, $address, $city, $state, $zip, $id){
+        $query="UPDATE users SET pp='$pp',fullname='$fullname',username='$username',email='$email',phone='$phone',pass='$pass',nid='$nid',dob='$dob',gender='$gender',address='$address',city='$city',state='$state',zip='$zip' WHERE id=".$id;
+        doNoQuery($query);
     }
-    function deleteLawyer(){
-        
+    function deleteLawyer($id){
+        $query="DELETE FROM users WHERE id=".$id;
+        doNoQuery($query);
     }
-    function getLawyer(){
-
+    function getLawyer($id){
+        $query="SELECT * FROM users WHERE ID=".$id;
+        return doQuery($query);
     }
     function getLawyers(){
-        
+        $query="SELECT * FROM users";
+        return doQuery($query);
     }
 ?>

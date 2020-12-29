@@ -11,7 +11,7 @@
             <tr>
                 <td style="padding:20px;"><img src="../assets/justicelogo.png"; width="380" height="480"></td>
                 <td align="right" class="dropshadow">
-                    <h1 style="color:Green">A Confirmation Email has been<br>Sent to Your Email Address!</h1>
+                    <h1 style="color:Green;padding:20px;">A Confirmation Email has been<br>Sent to Your Email Address!</h1>
                 </td>
             </tr>
         </table>
