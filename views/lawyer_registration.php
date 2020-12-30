@@ -5,7 +5,7 @@
 <html>
     <head>
         <title>Justice - Registration</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="../styles/lawyer_styles.css">
         <link rel="icon" href="../assets/favicon_all_logo.png">
     </head>
@@ -16,9 +16,9 @@
                     <tr>
                         <td style="padding:20px;"><img src="../assets/justicelogo.png"; width="380" height="480"></td>
                         <td align="center">
-                            <div class="panel panel-success dropshadow">
-                                <div class="panel-heading">Register as Lawyer</div>
-                                <div class="panel-body">
+                            <div class="card border-success mb3 dropshadow">
+                                <div class="card-header">Register as Lawyer</div>
+                                <div class="card-body">
                                     <table>
                                         <tr>
                                             <td align="left" style="padding-bottom:10px;">Profile Picture: </td>
@@ -30,15 +30,15 @@
                                         </tr>
                                         <tr>
                                             <td align="left" style="padding-bottom:10px;">User Name: </td>
-                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" type="text" name="username" id="username" placeholder="User Name" value="<?php echo $username; ?>"><span id="err_username" style="color:red;"><?php echo $err_username;?></span></td>
+                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" onkeyup="isTakenUsername(this.value)" type="text" name="username" id="username" placeholder="User Name" value="<?php echo $username; ?>"><span id="err_username" style="color:red;"><?php echo $err_username;?></span></td>
                                         </tr>
                                         <tr>
                                             <td align="left" style="padding-bottom:10px;">Email: </td>
-                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" type="text" name="email" id="email" placeholder="Email" value="<?php echo $email; ?>"><span id="err_email" style="color:red;"><?php echo $err_email;?></span></td>
+                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" onkeyup="isTakenEmail(this.value)" type="text" name="email" id="email" placeholder="Email" value="<?php echo $email; ?>"><span id="err_email" style="color:red;"><?php echo $err_email;?></span></td>
                                         </tr>
                                         <tr>
                                             <td align="left" style="padding-bottom:10px;">Phone: </td>
-                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" type="number" name="phone" id="phone" placeholder="Phone Number" value="<?php echo $phone; ?>"><span id="err_phone" style="color:red;"><?php echo $err_phone;?></span></td>
+                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" onkeyup="isTakenPhone(this.value)" type="number" name="phone" id="phone" placeholder="Phone Number" value="<?php echo $phone; ?>"><span id="err_phone" style="color:red;"><?php echo $err_phone;?></span></td>
                                         </tr>
                                         <tr>
                                             <td align="left" style="padding-bottom:10px;">Password: </td>
@@ -50,7 +50,7 @@
                                         </tr>
                                         <tr>
                                             <td align="left" style="padding-bottom:10px;">NID: </td>
-                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" type="number" name="nid" id="nid" placeholder="NID" value="<?php echo $nid; ?>"><span id="err_nid" style="color:red;"><?php echo $err_nid;?></span></td>
+                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" onkeyup="isTakenNid(this.value)" type="number" name="nid" id="nid" placeholder="NID" value="<?php echo $nid; ?>"><span id="err_nid" style="color:red;"><?php echo $err_nid;?></span></td>
                                         </tr>
                                         <tr>
                                             <td align="left" style="padding-bottom:10px;">Birthday: </td>
@@ -84,7 +84,7 @@
                                             <td style="padding-bottom:20px;" colspan="2" align="center"><a href="landing.php"><U>Already registered! Go to login.</U></a></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2" align="center"><input class="btn btn-success" type="submit" name="reg_button" value="Register"></td>
+                                            <td colspan="2" align="center"><input class="btn btn-outline-success" type="submit" name="reg_button" value="Register"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -95,5 +95,6 @@
             </form>
         </center>
     <script src="../scripts/lawyer_validation.js"></script>
+    <script src="../scripts/common_validation.js"></script>
     </body>
 </html>

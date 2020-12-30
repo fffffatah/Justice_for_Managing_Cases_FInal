@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Confirm Registration - Lawyer</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="../styles/lawyer_styles.css">
         <link rel="icon" href="../assets/favicon_all_logo.png">
     </head>
@@ -11,7 +11,7 @@
             <tr>
                 <td style="padding:20px;"><img src="../assets/justicelogo.png"; width="380" height="480"></td>
                 <td align="right" class="dropshadow">
-                    <h1 style="color:Green;padding:20px;">A Confirmation Email has been<br>Sent to Your Email Address!</h1>
+                    <center><h1 style="color:Green;padding:20px;">A Confirmation Email has been<br>Sent to Your Email Address!</h1></center>
                 </td>
             </tr>
         </table>

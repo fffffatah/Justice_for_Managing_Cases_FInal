@@ -74,6 +74,7 @@
         }
         elseif(strpos($_POST["email"],"@") && strpos($_POST["email"],".")){
             if(strpos($_POST["email"],"@") < strpos($_POST["email"],".")){
+                getLawyerByEmail(htmlspecialchars($_POST["email"]));
                 $email=htmlspecialchars($_POST["email"]);
             }
             else{
@@ -233,5 +234,44 @@
     function getLawyers(){
         $query="SELECT * FROM users";
         return doQuery($query);
+    }
+    function getLawyerByEmail($email){
+        global $hasError, $err_email;
+        $query="SELECT * FROM users WHERE email='$email'";
+        $result=doQuery($query);
+        if(count($result)>0){
+            $err_email="* Email Taken";
+            $hasError=true;
+        }
+        getLawyerByUsername(htmlspecialchars($_POST["username"]));
+    }
+    function getLawyerByUsername($username){
+        global $hasError, $err_username;
+        $query="SELECT * FROM users WHERE username='$username'";
+        $result=doQuery($query);
+        if(count($result)>0){
+            $err_username="* Username Taken";
+            $hasError=true;
+        }
+        getLawyerByNid(htmlspecialchars($_POST["nid"]));
+    }
+    function getLawyerByNid($nid){
+        global $hasError, $err_nid;
+        $query="SELECT * FROM users WHERE nid='$nid'";
+        $result=doQuery($query);
+        if(count($result)>0){
+            $err_nid="* NID Taken";
+            $hasError=true;
+        }
+        getLawyerByPhone($_POST["phone"]);
+    }
+    function getLawyerByPhone($phone){
+        global $hasError, $err_phone;
+        $query="SELECT * FROM users WHERE phone='$phone'";
+        $result=doQuery($query);
+        if(count($result)>0){
+            $err_phone="* Phone Taken";
+            $hasError=true;
+        }
     }
 ?>

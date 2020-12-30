@@ -3,10 +3,13 @@
 ?>
 
 <?php
+    /*LOGIN PAGE PART START*/
     $login_email="";
 	$err_login_email="";
 	$login_pass="";
-	$err_login_pass="";
+    $err_login_pass="";
+    $cookie_name="id";
+    $cookie_value="";
 	$hasError=false;
 	$flag=false;
 	if(isset($_POST["login_button"])){
@@ -34,14 +37,19 @@
                 $flag=true;
             }
 			if(!$flag){
-				echo "Invalid Credentials!";
+                echo "<center><span style=\"color:red;\">";
+                echo "<h2>Invalid Credentials!</h2>";
+                echo "</center></span>";
 			}
 			else{
+                session_start();
+                $cookie_value=$user_id[0]["id"];
+                setcookie($cookie_name, $cookie_value, time()+1800, "/");
                 if(strcmp($user_id[0]["type"],"admin")==0){
                     //REDIRECT TO ADMIN DASHBOARD
                 }
                 elseif(strcmp($user_id[0]["type"],"lawyer")==0){
-                    header("Location: lawyer_dashboard.php?id=".$user_id[0]["id"]);
+                    header("Location: lawyer_dashboard.php");
                 }
                 elseif(strcmp($user_id[0]["type"],"judge")==0){
                     //REDIRECT TO JUDGE DASHBOARD
@@ -62,11 +70,59 @@
     if(isset($_POST["signup_judge_button"])){
 		//REDIRECT TO JUDGE REGISTRATION PAGE
     }
+    /*LOGIN PAGE PART END*/
+
+    /*USERNAME AND EMAIL VALIDITY CHECK PART START(AJAX)*/
+    if(isset($_GET["username_search"])){
+        getUserByUsername($_GET["username"]);
+    }
+    if(isset($_GET["email_search"])){
+        getUserByEmail($_GET["email"]);
+    }
+    if(isset($_GET["nid_search"])){
+        getUserByNid($_GET["nid"]);
+    }
+    if(isset($_GET["phone_search"])){
+        getUserByPhone($_GET["phone"]);
+    }
+    /*USERNAME AND EMAIL VALIDITY CHECK PART END(AJAX)*/
     
     //DATA ACCESS FUNCTIONS
     function getUser($email,$pass){
-        $query="SELECT * FROM users WHERE username='$email' AND password='$pass'";
+        $query="SELECT * FROM users WHERE email='$email' AND pass='$pass'";
         $result=doQuery($query);
         return (count($result)>0 ? $result : false);
+    }
+    function getUserByEmail($email){
+        $query="SELECT * FROM users WHERE email='$email'";
+        $result=doQuery($query);
+        if(count($result)>0){
+            echo "* Email Taken";
+        }
+    }
+    function getUserByUsername($username){
+        $query="SELECT * FROM users WHERE username='$username'";
+        $result=doQuery($query);
+        if(count($result)>0){
+            echo "* Username Taken";
+        }
+    }
+    function getUserByNid($nid){
+        $query="SELECT * FROM users WHERE nid='$nid'";
+        $result=doQuery($query);
+        if(count($result)>0){
+            echo "* NID Taken";
+        }
+    }
+    function getUserByPhone($phone){
+        $query="SELECT * FROM users WHERE phone='$phone'";
+        $result=doQuery($query);
+        if(count($result)>0){
+            echo "* Phone Taken";
+        }
+    }
+    function updatePassword($email, $pass){
+        $query="UPDATE users SET pass='$pass' WHERE email='$email'";
+        doNoQuery($query);
     }
 ?>
