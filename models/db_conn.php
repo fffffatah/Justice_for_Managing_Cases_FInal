@@ -1,8 +1,8 @@
 <?php
     $uname=getenv('MYSQLCONNSTR_dbUser');
     $server=getenv('MYSQLCONNSTR_dbHost');
-    //$pass=getenv('MYSQLCONNSTR_dbPass');
-    $pass="";
+    $pass=getenv('MYSQLCONNSTR_dbPass');
+    //$pass="";
     $db_name=getenv('MYSQLCONNSTR_dbName');
 
     function doNoQuery($query){
