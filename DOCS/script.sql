@@ -60,6 +60,21 @@ create table clients
             on delete cascade
 );
 
+create table documents
+(
+    id          int auto_increment
+        primary key,
+    document    varchar(500) null,
+    viewer_id   int          null,
+    uploader_id int          null,
+    constraint documents_users_id_fk
+        foreign key (viewer_id) references users (id)
+            on delete cascade,
+    constraint documents_users_id_fk_2
+        foreign key (uploader_id) references users (id)
+            on delete cascade
+);
+
 create table meetings
 (
     id                  int auto_increment

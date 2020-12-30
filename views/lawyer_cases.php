@@ -1,6 +1,6 @@
 <?php
     include 'lawyer_header.php';
-    require_once '../controllers/lawyer_controller.php';
+    require_once '../controllers/case_controller.php';
 ?>
 <table>
     <tr>
