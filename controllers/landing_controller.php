@@ -121,8 +121,4 @@
             echo "* Phone Taken";
         }
     }
-    function updatePassword($email, $pass){
-        $query="UPDATE users SET pass='$pass' WHERE email='$email'";
-        doNoQuery($query);
-    }
 ?>

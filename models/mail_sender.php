@@ -2,6 +2,23 @@
     require_once '../dependencies/sendgrid-php/sendgrid-php.php';
 ?>
 <?php
+    function sendOtpEmail($username, $address, $otp){
+        $email=new \SendGrid\Mail\Mail();
+        $email->setFrom("no-reply@justicecms.com", "Justice - OTP");
+        $email->setSubject("Your Justice Password Reset OTP");
+        $email->addTo($address, $username);
+        $email->addContent("text/plain", "OTP for Password Reset: ");
+        
+        $email->addContent("text/html", "<strong>Your OTP: ".$otp."</strong>");
+
+        $sendgrid=new \SendGrid(getenv('SENDGRID_API_KEY'));
+        try{
+            $response=$sendgrid->send($email);
+        }
+        catch (Exception $e){
+            //DO NOTHING
+        }
+    }
     function sendConfEmail($username, $address, $confLink){
         $email=new \SendGrid\Mail\Mail();
         $email->setFrom("no-reply@justicecms.com", "Justice - Confirmation");

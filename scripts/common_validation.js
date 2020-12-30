@@ -23,7 +23,7 @@ function isTakenEmail(email){
 			document.getElementById("err_email").innerHTML=xhttp.responseText;
 		}
 	}
-	if(username){
+	if(email){
         xhttp.open("GET","../controllers/landing_controller.php?email="+email+"&email_search=true",true);
 	    xhttp.send();
     }
@@ -40,7 +40,7 @@ function isTakenNid(nid){
 			document.getElementById("err_nid").innerHTML=xhttp.responseText;
 		}
 	}
-	if(username){
+	if(nid){
         xhttp.open("GET","../controllers/landing_controller.php?nid="+nid+"&nid_search=true",true);
 	    xhttp.send();
     }
@@ -57,7 +57,7 @@ function isTakenPhone(phone){
 			document.getElementById("err_phone").innerHTML=xhttp.responseText;
 		}
 	}
-	if(username){
+	if(phone){
         xhttp.open("GET","../controllers/landing_controller.php?phone="+phone+"&phone_search=true",true);
 	    xhttp.send();
     }
