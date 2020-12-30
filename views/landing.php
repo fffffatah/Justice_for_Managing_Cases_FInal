@@ -28,7 +28,7 @@
                                             <td style="padding-bottom:20px;"><input class="form-control" type="password" name="login_pass" id="login_pass" placeholder="Password"><span id="err_login_pass" style="color:red;"><?php echo $err_login_pass;?></span></td>
                                         </tr>
                                     </table>
-                                    <a href="lawyer_forgot_pass.php">Forgot password?</a><br><br>
+                                    <a href="forgot_pass.php">Forgot password?</a><br><br>
                                     <input class="btn btn-success" type="submit" name="login_button" value="Login">
                                 </div>
                             </div>
