@@ -31,6 +31,7 @@ create table cases
     client_id        int          null,
     complainant_id   int          null,
     judge_id         int          null,
+    lawyer_id        int          null,
     constraint cases_users_id_fk
         foreign key (client_id) references users (id)
             on delete cascade,
@@ -39,6 +40,9 @@ create table cases
             on delete cascade,
     constraint cases_users_id_fk_3
         foreign key (judge_id) references users (id)
+            on delete cascade,
+    constraint cases_users_id_fk_4
+        foreign key (lawyer_id) references users (id)
             on delete cascade
 );
 
