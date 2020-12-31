@@ -8,16 +8,16 @@
     $cases=getCasesForLaywer($_COOKIE["id"]);
     if(count($cases)>0){
         foreach($cases as $case){
-            if(strcmp($case["case_status"], "running")==0){
+            if(strcmp($case["case_status"], "Running")==0){
                 $runningCases++;
             }
-            elseif(strcmp($case["case_status"], "closed")==0){
+            elseif(strcmp($case["case_status"], "Closed")==0){
                 $closedCases++;
             }
-            elseif(strcmp($case["case_status"], "won")==0){
+            elseif(strcmp($case["case_status"], "Won")==0){
                 $casesWon++;
             }
-            elseif(strcmp($case["case_status"], "lost")==0){
+            elseif(strcmp($case["case_status"], "Lost")==0){
                 $casesLost++;
             }
         }

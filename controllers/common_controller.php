@@ -28,4 +28,8 @@
         $query="UPDATE users SET pass='$pass' WHERE email='$email'";
         doNoQuery($query);
     }
+    function getUserById($id){
+        $query="SELECT * FROM users WHERE id=".$id;
+        return doQuery($query);
+    }
 ?>
