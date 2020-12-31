@@ -11,7 +11,7 @@
 <center>
 <table>
     <tr>
-        <td align="left" style="padding-top:20px;">
+        <td align="left" style="padding-top:85px;">
         <div class="card" style="height:600px;width:850px;">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $client[0]["fullname"];?></h5>
@@ -35,7 +35,7 @@
                 <div class="card-footer"></div>
         </div>
         </td>
-        <td align="center" style="padding-top:20px;">
+        <td align="center" style="padding-top:100px;">
             <form action="" method="POST" enctype="multipart/form-data" onsubmit="return uploadDocValidation()">
             <div class="card border-info mb3" style="height:600px;width:600px;">
                 <div class="card-header">Documents</div>

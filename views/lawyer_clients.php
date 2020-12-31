@@ -8,7 +8,7 @@
 <center>
 <table>
     <tr>
-        <td align="center" style="padding-top:35px;">
+        <td align="center" style="padding-top:100px;">
             <form action="" method="POST" onsubmit="return addClientValidation()">
             <div class="card border-info mb3" style="height:600px;width:600px;">
                 <div class="card-header">Add Client</div>
@@ -20,7 +20,7 @@
             </div>
             </form>
         </td>
-        <td align="center" style="padding-top:20px;">
+        <td align="center" style="padding-top:85px;">
             <div class="card border-info mb3" style="height:600px;width:850px;">
                 <div class="card-header">All Clients</div>
                     <div class="card-body">

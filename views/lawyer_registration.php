@@ -66,19 +66,19 @@
                                         </tr>
                                         <tr>
                                             <td align="left" style="padding-bottom:10px;">Address: </td>
-                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" type="text" name="address" id="address" placeholder="Address"><span id="err_address" style="color:red;"><?php echo $err_address;?></span></td>
+                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" type="text" name="address" id="address" placeholder="Address" value="<?php echo $address; ?>"><span id="err_address" style="color:red;"><?php echo $err_address;?></span></td>
                                         </tr>
                                         <tr>
                                             <td align="left" style="padding-bottom:10px;">City: </td>
-                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" type="text" name="city" id="city" placeholder="City"><span id="err_city" style="color:red;"><?php echo $err_city;?></span></td>
+                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" type="text" name="city" id="city" placeholder="City" value="<?php echo $city; ?>"><span id="err_city" style="color:red;"><?php echo $err_city;?></span></td>
                                         </tr>
                                         <tr>
                                             <td align="left" style="padding-bottom:10px;">State: </td>
-                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" type="text" name="state" id="state" placeholder="State"><span id="err_state" style="color:red;"><?php echo $err_state;?></span></td>
+                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" type="text" name="state" id="state" placeholder="State" value="<?php echo $state; ?>"><span id="err_state" style="color:red;"><?php echo $err_state;?></span></td>
                                         </tr>
                                         <tr>
                                             <td align="left" style="padding-bottom:10px;">Zip/Postal: </td>
-                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" type="text" name="zip" id="zip" placeholder="Postal/Zip-Code"><span id="err_zip" style="color:red;"><?php echo $err_zip;?></span></td>
+                                            <td align="left" style="padding-bottom:10px;"><input class="form-control" type="text" name="zip" id="zip" placeholder="Postal/Zip-Code" value="<?php echo $zip; ?>"><span id="err_zip" style="color:red;"><?php echo $err_zip;?></span></td>
                                         </tr>
                                         <tr>
                                             <td style="padding-bottom:20px;" colspan="2" align="center"><a href="landing.php"><U>Already registered! Go to login.</U></a></td>

@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="../styles/lawyer_styles.css">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark dropshadow">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top dropshadow">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <div class="navbar-brand">
                     <img src="../assets/lawyer_dashboard_top_left_logo.png" height="50px" width="60px">

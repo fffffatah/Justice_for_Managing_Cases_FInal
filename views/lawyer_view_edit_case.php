@@ -17,7 +17,7 @@
 <center>
     <table>
         <tr>
-        <td align="left" style="padding-top:20px;">
+        <td align="left" style="padding-top:85px;">
         <div class="card" style="height:600px;width:850px;">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $case[0]["case_title"];?></h5>
@@ -37,7 +37,7 @@
                 </div>
         </div>
         </td>
-        <td align="center" style="padding-top:35px;">
+        <td align="center" style="padding-top:100px;">
             <form action="" method="POST"  enctype="multipart/form-data" onsubmit="return addCaseValidation()">
             <div class="card border-info mb3" style="height:600px;width:600px;">
                 <div class="card-header">Edit Case<h6 name="case_id" value="<?php echo $case[0]["id"];?>"></h6></div>
