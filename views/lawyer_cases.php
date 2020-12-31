@@ -101,6 +101,7 @@
             <div class="card border-info mb3" style="height:600px;width:850px;">
                 <div class="card-header">All Cases</div>
                     <div class="card-body">
+                    <div class="overflow-auto">
                         <table class="table table-striped">
                             <tr>
                                 <th scope="col">#SR</th>
@@ -125,6 +126,7 @@
                                 }
                             ?>
                         </table>
+                    </div>
                     </div>
                 <div class="card-footer"></div>
             </div>

@@ -222,6 +222,10 @@
         $query="SELECT * FROM cases WHERE lawyer_id=".$id;
         return doQuery($query);
     }
+    function getCasesForClient($id){
+        $query="SELECT * FROM cases WHERE client_id=".$id;
+        return doQuery($query);
+    }
     function deleteCase($id){
         $query="DELETE FROM cases WHERE id=".$id;
         doNoQuery($query);
