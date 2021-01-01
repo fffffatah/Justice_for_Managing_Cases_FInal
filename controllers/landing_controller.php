@@ -1,15 +1,14 @@
 <?php
     require_once '../models/db_conn.php';
 ?>
-
 <?php
     /*LOGIN PAGE PART START*/
-    $login_email="";
+  $login_email="";
 	$err_login_email="";
 	$login_pass="";
-    $err_login_pass="";
-    $cookie_name="id";
-    $cookie_value="";
+  $err_login_pass="";
+  $cookie_name="id";
+  $cookie_value="";
 	$hasError=false;
 	$flag=false;
 	if(isset($_POST["login_button"])){
@@ -52,7 +51,7 @@
                     header("Location: lawyer_dashboard.php");
                 }
                 elseif(strcmp($user_id[0]["type"],"judge")==0){
-                    //REDIRECT TO JUDGE DASHBOARD
+                  header("Location: judge_dashboard.php");
                 }
                 else{
                     //REDIRECT TO COMPLAINANT DASHBOARD
@@ -60,7 +59,7 @@
 			}
         }
     }
-    
+
 	if(isset($_POST["signup_lawyer_button"])){
 		header("Location: lawyer_registration.php");
 	}
@@ -69,6 +68,8 @@
     }
     if(isset($_POST["signup_judge_button"])){
 		//REDIRECT TO JUDGE REGISTRATION PAGE
+    header("Location: judge_registration.php");
+
     }
     /*LOGIN PAGE PART END*/
 
@@ -86,7 +87,7 @@
         getUserByPhone($_GET["phone"]);
     }
     /*USERNAME AND EMAIL VALIDITY CHECK PART END(AJAX)*/
-    
+
     //DATA ACCESS FUNCTIONS
     function getUser($email,$pass){
         $query="SELECT * FROM users WHERE email='$email' AND pass='$pass'";

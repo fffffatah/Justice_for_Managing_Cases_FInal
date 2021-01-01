@@ -11,7 +11,7 @@
             <tr>
                 <td style="padding:20px;"><img src="../assets/justicelogo.png"; width="380" height="480"></td>
                 <td align="right" class="dropshadow">
-                    <center><h1 style="color:Green;padding:20px;">Your Lawyer Account Has Been<br>Created Successfully!</h1></center>
+                    <center><h1 style="color:Green;padding:20px;">Your Account Has Been<br>Created Successfully!</h1></center>
                     <center><a class="btn btn-outline-success" href="landing.php">Back To Login</a></center>
                 </td>
             </tr>

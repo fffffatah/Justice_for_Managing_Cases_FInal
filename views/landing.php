@@ -40,7 +40,7 @@
                                     <div class="btn-group-vertical">
                                         <a class="btn btn-info text-left" href="lawyer_registration.php"><i class="fas fa-gavel"></i> As Lawyer</a>
                                         <a class="btn btn-info text-left" href=""><i class="fas fa-users"></i> As Complainant</a><!--ADD YOUR HYPERLINK-->
-                                        <a class="btn btn-info text-left" href=""><i class="fas fa-balance-scale"></i> As Judge</a><!--ADD YOUR HYPERLINK-->
+                                        <a class="btn btn-info text-left" href="judge_registration.php"><i class="fas fa-balance-scale"></i> As Judge</a><!--ADD YOUR HYPERLINK-->
                                     </div>
                                 </div>
                             </div>

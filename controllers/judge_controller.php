@@ -1,9 +1,7 @@
 <?php
     require_once '../models/db_conn.php';
     require_once '../models/mail_sender.php';
-    require_once '../models/generate_pdf.php';
 ?>
-
 <?php
     $pp="";
     $err_pp="";
@@ -35,7 +33,7 @@
     $err_zip="";
     $cookie_value=uniqid();
     $cookie_name="unique_id";
-    $hasError=false;
+    $hasError=false;  
     if(isset($_POST["reg_button"])){
         //PROFILE PIC VALIDATION
         if(empty($_FILES["pp"]["name"])){
@@ -73,16 +71,14 @@
             $hasError=true;
         }
         elseif(strpos($_POST["email"],"@") && strpos($_POST["email"],".")){
-            //if(strpos($_POST["email"],"@") < strpos($_POST["email"],".")){
-                //getLawyerByEmail(htmlspecialchars($_POST["email"]));
-                //$email=htmlspecialchars($_POST["email"]);
-            //}
-            //else{
-                //$err_email="* '@' Must be before '.'.";
-                //$hasError=true;
-            //}
-            getLawyerByEmail(htmlspecialchars($_POST["email"]));
-            $email=htmlspecialchars($_POST["email"]);
+            if(strpos($_POST["email"],"@") < strpos($_POST["email"],".")){
+                getjudgeByEmail(htmlspecialchars($_POST["email"]));
+                $email=htmlspecialchars($_POST["email"]);
+            }
+            else{
+                $err_email="* '@' Must be before '.'.";
+                $hasError=true;
+            }
         }
         else{
             $err_email="* Email must contain '@' and '.'.";
@@ -199,110 +195,45 @@
             header("Location: confirmation_page.php");
         }
     }
-    //UPDATE PROFILE VALIDATIONS
-    if(isset($_POST["update_button"])){
-        //PROFILE PIC VALIDATION
-        if(empty($_FILES["pp"]["name"])){
-            $err_pp="* Profile Picture Required.";
-            $hasError=true;
-        }
-        else{
-            $fileType=strtolower(pathinfo(basename($_FILES["pp"]["name"]),PATHINFO_EXTENSION));
-            $pp="../storage/images/".uniqid().".$fileType";
-            move_uploaded_file($_FILES["pp"]["tmp_name"],$pp);
-        }
-        //FULLNAME VALIDATION
-        if(empty($_POST["fullname"])){
-            $err_fullname="* Full Name Required.";
-            $hasError=true;
-        }
-        else{
-            $fullname=htmlspecialchars($_POST["fullname"]);
-        }
-        //DATE OF BIRTH VALIDATION
-        if(!isset($_POST["dob"])){
-            $err_dob="* Birthday Required.";
-            $hasError=true;
-        }
-        else{
-            $dob=$_POST["dob"];
-        }
-        //ADDRESS VALIDATION
-        if(empty($_POST["address"])){
-            $err_address="* Address Required.";
-            $hasError=true;
-        }
-        else{
-            $address=htmlspecialchars($_POST["address"]);
-        }
-        //CITY VALIDATION
-        if(empty($_POST["city"])){
-            $err_city="* City Required.";
-            $hasError=true;
-        }
-        else{
-            $city=htmlspecialchars($_POST["city"]);
-        }
-        //STATE VALIDATION
-        if(empty($_POST["state"])){
-            $err_state="* State Required.";
-            $hasError=true;
-        }
-        else{
-            $state=htmlspecialchars($_POST["state"]);
-        }
-        //ZIP VALIDATION
-        if(empty($_POST["zip"])){
-            $err_zip="* Zip/Postal Code Required.";
-            $hasError=true;
-        }
-        else{
-            $zip=htmlspecialchars($_POST["zip"]);
-        }
-
-        if(!$hasError){
-            updateLawyer($pp, $fullname, $dob, $address, $city, $state, $zip, $_COOKIE["id"]);
-        }
-    }
     if(isset($_GET["confirm"])){
         if(isset($_COOKIE[$cookie_name])){
             if(strcmp($_COOKIE[$cookie_name],$_GET["unid"])==0){
                 unset($_COOKIE[$cookie_name]);
                 setcookie($cookie_name, null, -1, '/');
-                addLawyer($_GET["pp"], $_GET["fullname"], $_GET["username"], $_GET["email"], $_GET["phone"], $_GET["pass"], $_GET["nid"], $_GET["dob"], $_GET["gender"], $_GET["address"], $_GET["city"], $_GET["state"], $_GET["zip"]);
+                addjudge($_GET["pp"], $_GET["fullname"], $_GET["username"], $_GET["email"], $_GET["phone"], $_GET["pass"], $_GET["nid"], $_GET["dob"], $_GET["gender"], $_GET["address"], $_GET["city"], $_GET["state"], $_GET["zip"]);
                 header("Location: successfull_signup.php");
             }
             else{
-                header("Location: lawyer_registration.php");
+                header("Location: judge_registration.php");
             }
         }
         else{
-            header("Location: lawyer_registration.php");
+            header("Location: judge_registration.php");
         }
     }
 
-    //LAWYER DATA ACCESS FUNCTIONS
-    function addLawyer($pp, $fullname, $username, $email, $phone, $pass, $nid, $dob, $gender, $address, $city, $state, $zip){
-        $query="INSERT INTO users(PP, FULLNAME, USERNAME, EMAIL, PHONE, PASS, NID, DOB, GENDER, ADDRESS, CITY, STATE, ZIP, TYPE) VALUES('$pp','$fullname','$username','$email','$phone','$pass','$nid','$dob','$gender','$address','$city','$state','$zip','lawyer')";
+    //judge DATA ACCESS FUNCTIONS
+    function addjudge($pp, $fullname, $username, $email, $phone, $pass, $nid, $dob, $gender, $address, $city, $state, $zip){
+        $query="INSERT INTO users(PP, FULLNAME, USERNAME, EMAIL, PHONE, PASS, NID, DOB, GENDER, ADDRESS, CITY, STATE, ZIP, TYPE) VALUES('$pp','$fullname','$username','$email','$phone','$pass','$nid','$dob','$gender','$address','$city','$state','$zip','judge')";
         doNoQuery($query);
     }
-    function updateLawyer($pp, $fullname, $dob, $address, $city, $state, $zip, $id){
-        $query="UPDATE users SET pp='$pp',fullname='$fullname',dob='$dob',address='$address',city='$city',state='$state',zip='$zip' WHERE id=".$id;
+    function updatejudge($pp, $fullname, $username, $email, $phone, $pass, $nid, $dob, $gender, $address, $city, $state, $zip, $id){
+        $query="UPDATE users SET pp='$pp',fullname='$fullname',username='$username',email='$email',phone='$phone',pass='$pass',nid='$nid',dob='$dob',gender='$gender',address='$address',city='$city',state='$state',zip='$zip' WHERE id=".$id;
         doNoQuery($query);
     }
-    function deleteLawyer($id){
+    function deletejudge($id){
         $query="DELETE FROM users WHERE id=".$id;
         doNoQuery($query);
     }
-    function getLawyer($id){
+    function getjudge($id){
         $query="SELECT * FROM users WHERE ID=".$id;
         return doQuery($query);
     }
-    function getLawyers(){
+    function getjudges(){
         $query="SELECT * FROM users";
         return doQuery($query);
     }
-    function getLawyerByEmail($email){
+    function getjudgeByEmail($email){
         global $hasError, $err_email;
         $query="SELECT * FROM users WHERE email='$email'";
         $result=doQuery($query);
@@ -310,9 +241,9 @@
             $err_email="* Email Taken";
             $hasError=true;
         }
-        getLawyerByUsername(htmlspecialchars($_POST["username"]));
+        getjudgeByUsername(htmlspecialchars($_POST["username"]));
     }
-    function getLawyerByUsername($username){
+    function getjudgeByUsername($username){
         global $hasError, $err_username;
         $query="SELECT * FROM users WHERE username='$username'";
         $result=doQuery($query);
@@ -320,9 +251,9 @@
             $err_username="* Username Taken";
             $hasError=true;
         }
-        getLawyerByNid(htmlspecialchars($_POST["nid"]));
+        getjudgeByNid(htmlspecialchars($_POST["nid"]));
     }
-    function getLawyerByNid($nid){
+    function getjudgeByNid($nid){
         global $hasError, $err_nid;
         $query="SELECT * FROM users WHERE nid='$nid'";
         $result=doQuery($query);
@@ -330,9 +261,9 @@
             $err_nid="* NID Taken";
             $hasError=true;
         }
-        getLawyerByPhone($_POST["phone"]);
+        getjudgeByPhone($_POST["phone"]);
     }
-    function getLawyerByPhone($phone){
+    function getjudgeByPhone($phone){
         global $hasError, $err_phone;
         $query="SELECT * FROM users WHERE phone='$phone'";
         $result=doQuery($query);
