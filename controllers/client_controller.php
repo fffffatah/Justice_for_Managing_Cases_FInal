@@ -15,7 +15,7 @@
             $client=getClientByNid($client_nid);
             if(count($client)>0){
                 $client_id=$client[0]["id"];
-                $client_exists=getClientById($client_id);
+                $client_exists=getClientById($client_id,$_COOKIE["id"]);
                 if(count($client_exists)>0){
                     $err_client_nid="* Client Already Exists.";
                     $hasError=true;
@@ -40,8 +40,8 @@
         $query="SELECT * FROM clients WHERE lawyer_id=".$id;
         return doQuery($query);
     }
-    function getClientById($id){
-        $query="SELECT * FROM clients WHERE client_id=$id";
+    function getClientById($client_id, $lawyer_id){
+        $query="SELECT * FROM clients WHERE client_id=$client_id AND lawyer_id=$lawyer_id";
         return doQuery($query);
     }
     function deleteClient($id){

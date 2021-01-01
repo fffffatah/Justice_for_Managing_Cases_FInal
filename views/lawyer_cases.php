@@ -105,6 +105,7 @@
                         <table class="table table-striped">
                             <tr>
                                 <th scope="col">#SR</th>
+                                <th scope="col">Date Added/Updated</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Hearing Date</th>
                                 <th scope="col">Status</th>
@@ -116,6 +117,7 @@
                                 foreach($cases as $case){
                                     echo "<tr>";
                                     echo "<th>".$sr."</th>";
+                                    echo "<td>".$case["date_added"]."</td>";
                                     echo "<td>".$case["case_title"]."</td>";
                                     echo "<td>".$case["hearing_date"]."</td>";
                                     echo "<td>".$case["case_status"]."</td>";

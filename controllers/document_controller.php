@@ -18,8 +18,8 @@
             addDocument($document, $_GET["id"], $_COOKIE["id"]);
         }
     }
-    function getDocumentsForViewer($id){
-        $query="SELECT * FROM documents WHERE viewer_id=$id";
+    function getDocumentsForViewerUploader($viewer_id, $uploader_id){
+        $query="SELECT * FROM documents WHERE viewer_id=$viewer_id AND uploader_id=$uploader_id";
         return doQuery($query);
     }
     function addDocument($document, $viewer_id, $uploader_id){

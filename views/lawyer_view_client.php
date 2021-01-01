@@ -6,7 +6,7 @@
     require_once '../controllers/document_controller.php';
     $client=getUserById($_GET["id"]);
     $cases=getCasesForClient($_GET["id"]);
-    $documents=getDocumentsForViewer($_GET["id"]);
+    $documents=getDocumentsForViewerUploader($_GET["id"], $_COOKIE["id"]);
 ?>
 <center>
 <table>
@@ -20,7 +20,7 @@
                     <?php
                         $sr=1;
                         foreach($cases as $case){
-                            echo $sr.". ".$case["case_title"];
+                            echo $sr.". ".$case["case_title"]."<br>";
                             $sr++;
                         }
                     ?>
@@ -48,8 +48,8 @@
                                 <th scope="col">Download</th>
                             </tr>
                             <?php
+                                $sr=1;
                                 foreach($documents as $document){
-                                    $sr=1;
                                     $path = $document["document"];
                                     $fileName = basename($path);
                                     $fileName = basename($path, ".*");

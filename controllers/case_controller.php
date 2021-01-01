@@ -207,7 +207,7 @@
 
     //CASES DATA ACCESS
     function addCase($case_title, $case_description, $date_added, $hearing_date, $case_status, $document, $client_id, $complainant_id, $judge_id, $lawyer_id){
-        $query="INSERT INTO cases(case_title, case_description, date_added, hearing_date, case_status, document, client_id, complainant_id, judge_id, lawyer_id) VALUES('$case_title', '$case_description', '$date_added', '$hearing_date', '$case_status', '$document', $client_id, $complainant_id, $judge_id, $lawyer_id, $id)";
+        $query="INSERT INTO cases(case_title, case_description, date_added, hearing_date, case_status, document, client_id, complainant_id, judge_id, lawyer_id) VALUES('$case_title', '$case_description', '$date_added', '$hearing_date', '$case_status', '$document', $client_id, $complainant_id, $judge_id, $lawyer_id)";
         doNoQuery($query);
     }
     function updateCase($case_title, $case_description, $date_added, $hearing_date, $case_status, $document, $client_id, $complainant_id, $judge_id, $lawyer_id, $id){

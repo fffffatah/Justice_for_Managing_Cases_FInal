@@ -8,7 +8,7 @@
             $client = new \Pdfcrowd\HtmlToPdfClient(getenv('PDFCROWD_USER'), getenv('PDFCROWD_API'));
             $filename=$id."_".uniqid()."_".$doctype.".pdf";
             $pdf=$client->convertStringToFile($html_string, $filepath.$filename);
-            return $filename;
+            return $filepath.$filename;
         }
         catch(\Pdfcrowd\Error $why)
         {

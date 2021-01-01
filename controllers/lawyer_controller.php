@@ -73,14 +73,16 @@
             $hasError=true;
         }
         elseif(strpos($_POST["email"],"@") && strpos($_POST["email"],".")){
-            if(strpos($_POST["email"],"@") < strpos($_POST["email"],".")){
-                getLawyerByEmail(htmlspecialchars($_POST["email"]));
-                $email=htmlspecialchars($_POST["email"]);
-            }
-            else{
-                $err_email="* '@' Must be before '.'.";
-                $hasError=true;
-            }
+            //if(strpos($_POST["email"],"@") < strpos($_POST["email"],".")){
+                //getLawyerByEmail(htmlspecialchars($_POST["email"]));
+                //$email=htmlspecialchars($_POST["email"]);
+            //}
+            //else{
+                //$err_email="* '@' Must be before '.'.";
+                //$hasError=true;
+            //}
+            getLawyerByEmail(htmlspecialchars($_POST["email"]));
+            $email=htmlspecialchars($_POST["email"]);
         }
         else{
             $err_email="* Email must contain '@' and '.'.";
