@@ -1,6 +1,6 @@
 <?php
     include 'judge_header.php';
-    require_once '../controllers/case_controller.php';
+    require_once '../controllers/judge_case_controller.php';
     $runningCases=0;
     $closedCases=0;
     $cases=getCasesForjudge($_COOKIE["id"]);

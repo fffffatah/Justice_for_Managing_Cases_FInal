@@ -3,16 +3,44 @@
     require_once '../controllers/case_controller.php';
     require_once '../controllers/common_controller.php';
     require_once '../controllers/client_controller.php';
-    $cases=getCasesForLaywer($_COOKIE["id"]);
+    $case=getCaseById($_GET["id"]);
     $clients=getClients($_COOKIE["id"]);
+    $my_client="";
+    $my_judge="";
+    $my_complainant="";
+    if(count($case)>0){
+        $my_client=getUserById($case[0]["client_id"]);
+        $my_judge=getUserById($case[0]["judge_id"]);
+        $my_complainant=getUserById($case[0]["complainant_id"]);
+    }
 ?>
 <center>
-<table>
-    <tr>
+    <table>
+        <tr>
+        <td align="left" style="padding-top:85px;">
+        <div class="card" style="height:600px;width:850px;">
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $case[0]["case_title"];?></h5>
+                <h6 class="card-subtitle mb-2 text-muted">Status: <?php echo $case[0]["case_status"];?></h6>
+                <p class="card-text"><?php echo $case[0]["case_description"];?></p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><h6 class="card-subtitle mb-2 text-muted"><b>Client Name: </b><?php echo $my_client[0]["fullname"];?></h6></li>
+                    <li class="list-group-item"><h6 class="card-subtitle mb-2 text-muted"><b>Client Phone: </b><?php echo $my_client[0]["phone"];?></h6></li>
+                    <li class="list-group-item"><h6 class="card-subtitle mb-2 text-muted"><b>Complainant Name: </b><?php echo $my_complainant[0]["fullname"];?></h6></li>
+                    <li class="list-group-item"><h6 class="card-subtitle mb-2 text-muted"><b>Complainant Phone: </b><?php echo $my_complainant[0]["phone"];?></h6></li>
+                    <li class="list-group-item"><h6 class="card-subtitle mb-2 text-muted"><b>Judge Name: </b><?php echo $my_judge[0]["fullname"];?></h6></li>
+                    <li class="list-group-item"><h6 class="card-subtitle mb-2 text-muted"><b>Judge Phone: </b><?php echo $my_judge[0]["phone"];?></h6></li>
+                </ul>
+            </div>
+                <div class="card-footer">
+                    <a href="<?php echo $case[0]["document"];?>" class="card-link" download>Download Attachment</a>
+                </div>
+        </div>
+        </td>
         <td align="center" style="padding-top:100px;">
             <form action="" method="POST"  enctype="multipart/form-data" onsubmit="return addCaseValidation()">
             <div class="card border-info mb3" style="height:600px;width:600px;">
-                <div class="card-header">Add Case</div>
+                <div class="card-header">Edit Case<h6 name="case_id" value="<?php echo $case[0]["id"];?>"></h6></div>
                     <div class="card-body">
                         <table>
                             <tr>
@@ -21,13 +49,13 @@
                                     <tr>
                                         <td>
                                             <h7>Case Title:</h7>
-                                            <input class="form-control" type="text" name="case_title" id="case_title" placeholder="Case Title" value="<?php echo $case_title;?>"><span id="err_case_title" style="color:red;"><?php echo $err_case_title;?></span>
+                                            <input class="form-control" type="text" name="case_title" id="case_title" placeholder="Case Title" value="<?php echo $case[0]["case_title"];?>"><span id="err_case_title" style="color:red;"><?php echo $err_case_title;?></span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <h7>Case Description:</h7>
-                                            <textarea class="form-control" name="case_description" id="case_description" placeholder="Case Description" value="<?php echo $case_description;?>" cols="30" rows="4"></textarea><span id="err_case_description" style="color:red;"><?php echo $err_case_description;?></span>
+                                            <textarea class="form-control" name="case_description" id="case_description" placeholder="Case Description" cols="30" rows="4"><?php echo $case[0]["case_description"];?></textarea><span id="err_case_description" style="color:red;"><?php echo $err_case_description;?></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -53,7 +81,7 @@
                                     <tr>
                                         <td>
                                             <h7>Hearing Date:</h7>
-                                            <input class="form-control" type="date" name="hearing_date" id="hearing_date"><span id="err_hearing_date" style="color:red;"><?php echo $err_hearing_date;?></span>
+                                            <input class="form-control" type="date" name="hearing_date" id="hearing_date" value="<?php echo $case[0]["hearing_date"];?>"><span id="err_hearing_date" style="color:red;"><?php echo $err_hearing_date;?></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -73,13 +101,13 @@
                                     <tr>
                                         <td>
                                             <h7>Complainant NID:</h7>
-                                            <input class="form-control" type="number" name="complainant_nid" id="complainant_nid" placeholder="Complainant NID" value="<?php echo $complainant_nid; ?>"><span id="err_complainant_nid" style="color:red;"><?php echo $err_complainant_nid;?></span>
+                                            <input class="form-control" type="number" name="complainant_nid" id="complainant_nid" placeholder="Complainant NID" value="<?php echo $my_complainant[0]["nid"]; ?>"><span id="err_complainant_nid" style="color:red;"><?php echo $err_complainant_nid;?></span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <h7>Judge NID:</h7>
-                                            <input class="form-control" type="number" name="judge_nid" id="judge_nid" placeholder="Judge NID" value="<?php echo $judge_nid; ?>"><span id="err_judge_nid" style="color:red;"><?php echo $err_judge_nid;?></span>
+                                            <input class="form-control" type="number" name="judge_nid" id="judge_nid" placeholder="Judge NID" value="<?php echo $my_judge[0]["nid"]; ?>"><span id="err_judge_nid" style="color:red;"><?php echo $err_judge_nid;?></span>
                                         </td>
                                     </tr>
                                 </table>
@@ -93,48 +121,12 @@
                             </tr>
                         </table>
                     </div>
-                <div class="card-footer"><input class="btn btn-success" type="submit" name="add_case_button" id="add_case_button" value="Add"></div>
+                <div class="card-footer"><input class="btn btn-success" type="submit" name="update_case_button" id="update_case_button" value="Update"></div>
             </div>
             </form>
         </td>
-        <td align="center" style="padding-top:85px;">
-            <div class="card border-info mb3" style="height:600px;width:850px;">
-                <div class="card-header">All Cases</div>
-                    <div class="card-body">
-                    <div class="overflow-auto">
-                        <table class="table table-striped">
-                            <tr>
-                                <th scope="col">#SR</th>
-                                <th scope="col">Date Added/Updated</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Hearing Date</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">View/Edit</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                            <?php
-                                $sr=1;
-                                foreach($cases as $case){
-                                    echo "<tr>";
-                                    echo "<th>".$sr."</th>";
-                                    echo "<td>".$case["date_added"]."</td>";
-                                    echo "<td>".$case["case_title"]."</td>";
-                                    echo "<td>".$case["hearing_date"]."</td>";
-                                    echo "<td>".$case["case_status"]."</td>";
-                                    echo "<td><a class=\"btn btn-outline-primary\" href=\"lawyer_view_edit_case.php?id=".$case["id"]."\">View/Edit</a></td>";
-                                    echo "<td><a class=\"btn btn-outline-danger\" href=\"lawyer_delete_case.php?id=".$case["id"]."\"target=\"_blank\" >Delete</a></td>";
-                                    echo "</tr>";
-                                    $sr++;
-                                }
-                            ?>
-                        </table>
-                    </div>
-                    </div>
-                <div class="card-footer"></div>
-            </div>
-        </td>
-    </tr>
-</table>
+        </tr>
+    </table>
 </center>
 <script src="../scripts/case_validation.js"></script>
 <?php
