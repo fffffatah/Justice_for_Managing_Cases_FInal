@@ -46,6 +46,19 @@ create table cases
             on delete cascade
 );
 
+create table chats
+(
+    id          int auto_increment
+        primary key,
+    message     varchar(500) null,
+    sender_id   int          null,
+    receiver_id int          null,
+    constraint chats_users_id_fk
+        foreign key (sender_id) references users (id),
+    constraint chats_users_id_fk_2
+        foreign key (receiver_id) references users (id)
+);
+
 create table clients
 (
     id        int auto_increment
