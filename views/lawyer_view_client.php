@@ -39,7 +39,7 @@
             <form action="" method="POST" enctype="multipart/form-data" onsubmit="return uploadDocValidation()">
             <div class="card border-info mb3" style="height:600px;width:600px;">
                 <div class="card-header">Documents</div>
-                    <div class="card-body">
+                    <div class="card-body scroll-box">
                     <div class="overflow-auto">
                         <table class="table table-striped">
                             <tr>
