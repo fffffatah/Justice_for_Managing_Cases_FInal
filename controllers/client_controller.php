@@ -5,6 +5,7 @@
     $err_client_nid="";
     $client_id="";
     $lawyer_id="";
+    $judge_id="";
     if(isset($_POST["add_client_button"])){
         if(empty($_POST["client_nid"])){
             $err_client_nid="* NID Required.";
@@ -36,14 +37,22 @@
         $query="INSERT INTO clients(client_id, lawyer_id) VALUES ($client_id,$lawyer_id)";
         doNoQuery($query);
     }
+
     function getClients($id){
-        $query="SELECT * FROM clients WHERE lawyer_id=".$id;
+        $query="SELECT * FROM clients WHERE judge_id=".$id;
         return doQuery($query);
     }
+
+    function getlawyer($id){
+        $query="SELECT judge_id FROM clients WHERE judge_id=".$id;
+        return doQuery($query);
+    }
+
     function getClientById($client_id, $lawyer_id){
-        $query="SELECT * FROM clients WHERE client_id=$client_id AND lawyer_id=$lawyer_id";
+        $query="SELECT * FROM clients WHERE client_id=$client_id AND judge_id=$judge_id";
         return doQuery($query);
     }
+
     function deleteClient($id){
         $query="DELETE FROM clients WHERE client_id=$id";
         doNoQuery($query);

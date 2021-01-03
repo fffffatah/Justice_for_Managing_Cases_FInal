@@ -21,8 +21,7 @@
   <div class="">
     <a href="judge_dashboard.php">Dashboard</a>
     <a href="j_view_cases.php">View Cases</a>
-    <a href="j_lawyers.php">Lawyers</a>
-    <a href="j_clints.php">Clints</a>
+    <a href="j_clints.php">Search Client and Lawyer</a>
     <a href="j_Communication.php">Communication</a>
     </div>
 </div>

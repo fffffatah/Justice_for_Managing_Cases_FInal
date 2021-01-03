@@ -12,6 +12,8 @@ function addCaseValidation(){
     var err_complainant_nid=getElement("err_complainant_nid");
     var judge_nid=getElement("judge_nid");
     var err_judge_nid=getElement("err_judge_nid");
+    var lawyer_nid=getElement("judge_nid");
+    var err_lawyer_nid=getElement("err_judge_nid");
     var att_document=getElement("document");
     var err_document=getElement("err_document");
     var hearing_date=getElement("hearing_date");
@@ -43,6 +45,12 @@ function addCaseValidation(){
         err_judge_nid.innerHTML="* NID Required.";
         judge_nid.focus();
         judge_nid.style.border="2px solid red";
+    }
+    if(lawyer_nid.value==""){
+        hasError=true;
+        err_lawyer_nid.innerHTML="* NID Required.";
+        lawyer_nid.focus();
+        lawyer_nid.style.border="2px solid red";
     }
     if(att_document.value==""){
         hasError=true;
@@ -87,6 +95,10 @@ function refreshCase(){
     judge_nid.style.border="2px solid black";
     var err_judge_nid=getElement("err_judge_nid");
     err_judge_nid.innerHTML="";
+    var lawyer_nid=getElement("lawyer_nid");
+    lawyer_nid.style.border="2px solid black";
+    var err_lawyer_nid=getElement("err_lawyer_nid");
+    err_lawyer_nid.innerHTML="";
     var att_document=getElement("document");
     att_document.style.border="2px solid black";
     var err_document=getElement("err_document");
