@@ -33,7 +33,8 @@
     $err_zip="";
     $cookie_value=uniqid();
     $cookie_name="unique_id";
-    $hasError=false;  
+    $hasError=false;
+
     if(isset($_POST["reg_button"])){
         //PROFILE PIC VALIDATION
         if(empty($_FILES["pp"]["name"])){
@@ -195,6 +196,69 @@
             header("Location: confirmation_page.php");
         }
     }
+    if(isset($_POST["update_button"])){
+        if(empty($_FILES["pp"]["name"])){
+            $err_pp="* Profile Picture Required.";
+            $hasError=true;
+        }
+        else{
+            $fileType=strtolower(pathinfo(basename($_FILES["pp"]["name"]),PATHINFO_EXTENSION));
+            $pp="../storage/images/".uniqid().".$fileType";
+            move_uploaded_file($_FILES["pp"]["tmp_name"],$pp);
+        }
+        if(empty($_POST["fullname"])){
+            $err_fullname="* Full Name Required.";
+            $hasError=true;
+        }
+        else{
+            $fullname=htmlspecialchars($_POST["fullname"]);
+        }
+
+        if(!isset($_POST["dob"])){
+            $err_dob="* Birthday Required.";
+            $hasError=true;
+        }
+        else{
+            $dob=$_POST["dob"];
+        }
+
+        if(empty($_POST["address"])){
+            $err_address="* Address Required.";
+            $hasError=true;
+        }
+        else{
+            $address=htmlspecialchars($_POST["address"]);
+        }
+
+        if(empty($_POST["city"])){
+            $err_city="* City Required.";
+            $hasError=true;
+        }
+        else{
+            $city=htmlspecialchars($_POST["city"]);
+        }
+
+        if(empty($_POST["state"])){
+            $err_state="* State Required.";
+            $hasError=true;
+        }
+        else{
+            $state=htmlspecialchars($_POST["state"]);
+        }
+
+        if(empty($_POST["zip"])){
+            $err_zip="* Zip/Postal Code Required.";
+            $hasError=true;
+        }
+        else{
+            $zip=htmlspecialchars($_POST["zip"]);
+        }
+
+        if(!$hasError){
+            updatejudge($pp, $fullname, $dob, $address, $city, $state, $zip, $_COOKIE["id"]);
+        }
+    }
+
     if(isset($_GET["confirm"])){
         if(isset($_COOKIE[$cookie_name])){
             if(strcmp($_COOKIE[$cookie_name],$_GET["unid"])==0){
@@ -212,13 +276,16 @@
         }
     }
 
+
     //judge DATA ACCESS FUNCTIONS
     function addjudge($pp, $fullname, $username, $email, $phone, $pass, $nid, $dob, $gender, $address, $city, $state, $zip){
         $query="INSERT INTO users(PP, FULLNAME, USERNAME, EMAIL, PHONE, PASS, NID, DOB, GENDER, ADDRESS, CITY, STATE, ZIP, TYPE) VALUES('$pp','$fullname','$username','$email','$phone','$pass','$nid','$dob','$gender','$address','$city','$state','$zip','judge')";
         doNoQuery($query);
     }
-    function updatejudge($pp, $fullname, $username, $email, $phone, $pass, $nid, $dob, $gender, $address, $city, $state, $zip, $id){
-        $query="UPDATE users SET pp='$pp',fullname='$fullname',username='$username',email='$email',phone='$phone',pass='$pass',nid='$nid',dob='$dob',gender='$gender',address='$address',city='$city',state='$state',zip='$zip' WHERE id=".$id;
+
+
+    function updatejudge($pp, $fullname, $dob, $address, $city, $state, $zip, $id){
+        $query="UPDATE users SET pp='$pp',fullname='$fullname',dob='$dob',address='$address',city='$city',state='$state',zip='$zip' WHERE id=".$id;
         doNoQuery($query);
     }
     function deletejudge($id){
@@ -272,4 +339,6 @@
             $hasError=true;
         }
     }
+
+    
 ?>

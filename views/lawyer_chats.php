@@ -42,7 +42,7 @@
                     <div class="card-body scroll-box">
                     <div class="table-responsive">
                         <table class="table" table-borderless id="my_chats">
-                            
+
                         </table>
                     </div>
                     </div>
@@ -54,5 +54,5 @@
 </center>
 <script src="../scripts/chat_ajax_validation.js"></script>
 <?php
-    include 'lawyer_footer.php';
+    include 'j_footer.php';
 ?>

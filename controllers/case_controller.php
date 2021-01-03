@@ -10,6 +10,8 @@
     $err_complainant_nid="";
     $judge_nid="";
     $err_judge_nid="";
+    $lawyer_nid="";
+    $err_lawyer_nid="";
     $document="";
     $err_document="";
     $date_added="";
@@ -113,6 +115,33 @@
             addCase($case_title, $case_description, $date_added, $hearing_date, $case_status, $document, $client_id, $complainant_id, $judge_id, $lawyer_id);
         }
     }
+
+    if(isset($_POST["assign_lawyer_button"])){
+      if(empty($_POST["lawyer_nid"])){
+          $err_lawyer_nid="* NID Required.";
+          $hasError=true;
+      }
+      else{
+          $lawyer_nid=htmlspecialchars($_POST["lawyer_nid"]);
+          $lawyer=getlawyerByNid($lawyer_nid);
+          if(count($lawyer)>0){
+              $lawyer_id=$lawyer[0]["id"];
+          }
+          else{
+              $err_lawyer_nid="* NID Invalid.";
+              $hasError=true;
+          }
+      }
+      if(!$hasError){
+          $date_added=date("d/m/Y");
+          $judge_id=$_COOKIE["id"];
+          updateCase1($lawyer_id, $_GET["id"]);
+      }
+
+    }
+
+
+
     //UPDATE CASE
     if(isset($_POST["update_case_button"])){
         //CASE TITLE VALIDATION
@@ -203,6 +232,7 @@
             $lawyer_id=$_COOKIE["id"];
             updateCase($case_title, $case_description, $date_added, $hearing_date, $case_status, $document, $client_id, $complainant_id, $judge_id, $lawyer_id, $_GET["id"]);
         }
+
     }
 
     //CASES DATA ACCESS
@@ -214,12 +244,20 @@
         $query="UPDATE cases SET case_title='$case_title', case_description='$case_description', date_added='$date_added', hearing_date='$hearing_date', case_status='$case_status', document='$document', client_id=$client_id, complainant_id=$complainant_id, judge_id=$judge_id, lawyer_id=$lawyer_id WHERE id=$id";
         doNoQuery($query);
     }
+    function updateCase1( $lawyer_id, $id){
+        $query="UPDATE cases SET  lawyer_id=$lawyer_id WHERE id=$id";
+        doNoQuery($query);
+    }
     function getCaseById($id){
         $query="SELECT * FROM cases WHERE id=".$id;
         return doQuery($query);
     }
     function getCasesForLaywer($id){
         $query="SELECT * FROM cases WHERE lawyer_id=".$id;
+        return doQuery($query);
+    }
+    function getCasesForjudge($id){
+        $query="SELECT * FROM cases WHERE judge_id=".$id;
         return doQuery($query);
     }
     function getCasesForClient($id){
@@ -236,6 +274,10 @@
     }
     function getJudgeByNid($judge_nid){
         $query="SELECT * FROM users WHERE nid='$judge_nid' AND type='judge'";
+        return doQuery($query);
+    }
+    function getlawyerByNid($lawyer_nid){
+        $query="SELECT * FROM users WHERE nid='$lawyer_nid' AND type='lawyer'";
         return doQuery($query);
     }
 ?>
